@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Parin Shah — AI/ML Security Engineer. Adversarial ML, GenAI red teaming, and production AI security. 2 patents, 4 publications.">
+<meta name="author" content="Parin Shah">
+<link rel="canonical" href="https://parin2605.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Parin Shah — AI/ML Security Engineer">
+<meta property="og:description" content="I break machine learning systems on purpose, then build the controls that hold them together. Adversarial ML, GenAI red teaming, 2 patents, 4 publications.">
+<meta property="og:url" content="https://parin2605.github.io/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23080D17%22/><text y=%22.9em%22 x=%2250%22 text-anchor=%22middle%22 font-size=%2270%22 font-family=%22monospace%22 font-weight=%22bold%22 fill=%22%23F2A93B%22>P</text></svg>">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Parin Shah — Adversarial ML</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap">
+
+<style>
+  :root {
+    --void:#04070D; --ground:#080D17; --panel:#0E1524; --panel-2:#131C2E; --panel-3:#18233A;
+    --rule:#1C2841; --rule-soft:#141D2F;
+    --text:#E8EEF7; --text-2:#A6B5CC; --text-3:#6D809E;
+    --amber:#F2A93B; --amber-dim:#7A5A1E; --coral:#FF7359; --cyan:#4FD8E8; --violet:#8B7BFF; --green:#5BD99A;
+    --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+    --sans:"IBM Plex Sans","Segoe UI",Helvetica,Arial,sans-serif;
+    --mono:"IBM Plex Mono","SF Mono",Consolas,monospace;
+    --measure:66ch;
+    --pad:clamp(1.1rem,4vw,3rem);
+  }
+  *{box-sizing:border-box}
+  body{background:var(--ground);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:64rem;margin:0 auto;padding:0 var(--pad) 4rem}
+  a{color:var(--amber);text-decoration:none}
+  a:focus-visible{outline:1px solid var(--amber);outline-offset:3px}
+  h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance}
+
+  /* ---- scroll progress ---- */
+  #prog{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--amber-dim),var(--amber));z-index:50}
+
+  /* ---- side rail ---- */
+  #rail{position:fixed;left:1.5rem;top:50%;transform:translateY(-50%);z-index:40;display:none;flex-direction:column;gap:.85rem}
+  @media(min-width:86rem){#rail{display:flex}}
+  #rail a{display:flex;align-items:center;gap:.6rem;color:var(--text-3);font-family:var(--mono);font-size:.63rem;letter-spacing:.12em;text-transform:uppercase}
+  #rail i{display:block;width:16px;height:1px;background:currentColor;transition:width .2s,background .2s}
+  #rail a span{opacity:0;transition:opacity .2s}
+  #rail a:hover span,#rail a.on span{opacity:1}
+  #rail a.on{color:var(--amber)}
+  #rail a.on i{width:26px}
+
+  /* ---- hero ---- */
+  .hero{position:relative;padding:clamp(2.75rem,8vw,5.5rem) 0 clamp(2.25rem,5vw,3.25rem);isolation:isolate}
+  #field{position:absolute;inset:-2rem calc(var(--pad)*-1) 0;width:calc(100% + var(--pad)*2);z-index:-1;opacity:.9;
+    mask-image:linear-gradient(to bottom,#000 0%,#000 52%,transparent 100%);
+    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 52%,transparent 100%)}
+  .status{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--mono);font-size:.67rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-3);border:1px solid var(--rule);background:rgba(14,21,36,.8);padding:.35rem .7rem;border-radius:2px}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(91,217,154,.16)}
+  .hero h1{font-size:clamp(2.9rem,11vw,6.4rem);font-weight:800;line-height:.9;letter-spacing:-.045em;margin:1.3rem 0 0;text-transform:uppercase}
+  .hero h1 em{font-style:normal;color:transparent;-webkit-text-stroke:1.2px var(--amber)}
+  .role-line{font-family:var(--mono);font-size:clamp(.71rem,2.1vw,.87rem);letter-spacing:.13em;text-transform:uppercase;color:var(--amber);margin:1.25rem 0 0;display:flex;flex-wrap:wrap;gap:.35rem .85rem}
+  .role-line span:not(:last-child)::after{content:" /";color:var(--amber-dim);margin-left:.5rem}
+  .thesis{max-width:var(--measure);color:var(--text-2);font-size:clamp(1rem,2.2vw,1.09rem);margin:1.8rem 0 0}
+  .thesis strong{color:var(--text);font-weight:500}
+  .contact{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem}
+  .contact a{font-family:var(--mono);font-size:.75rem;padding:.5rem .85rem;border:1px solid var(--rule);background:var(--panel);border-radius:2px;color:var(--text-2);transition:border-color .18s,color .18s,background .18s}
+  .contact a:hover{border-color:var(--amber);color:var(--amber);background:var(--panel-2)}
+
+  /* ---- readout ---- */
+  .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(8rem,1fr));border:1px solid var(--rule);background:var(--panel);border-radius:2px;overflow:hidden}
+  .cell{padding:1.1rem 1rem 1.2rem;border-right:1px solid var(--rule-soft)}
+  .cell:last-child{border-right:0}
+  .cell b{display:block;font-family:var(--display);font-size:1.95rem;font-weight:700;line-height:1;color:var(--amber);font-variant-numeric:tabular-nums}
+  .cell span{display:block;margin-top:.5rem;font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);line-height:1.4}
+
+  /* ---- sections ---- */
+  section{padding-top:clamp(3rem,6vw,4.5rem);scroll-margin-top:2rem}
+  .sec-head{display:flex;align-items:center;gap:1rem;margin-bottom:1.8rem}
+  .sec-head .idx{font-family:var(--mono);font-size:.67rem;letter-spacing:.12em;color:var(--amber);border:1px solid var(--amber-dim);padding:.2rem .45rem;border-radius:2px}
+  .sec-head h2{font-size:clamp(1.15rem,3vw,1.5rem);font-weight:700;letter-spacing:.02em;text-transform:uppercase}
+  .sec-head .rule{flex:1;height:1px;background:linear-gradient(90deg,var(--rule),transparent)}
+  .lede{max-width:var(--measure);color:var(--text-2);margin:-.4rem 0 1.9rem}
+
+  /* ---- figure ---- */
+  figure{margin:0;border:1px solid var(--rule);background:var(--panel);border-radius:2px;padding:1.5rem 1.25rem 1.1rem;overflow-x:auto}
+  figure svg{display:block;width:100%;min-width:44rem;max-width:100%;height:auto;color:var(--text-3)}
+  figcaption{margin-top:1rem;padding-top:.9rem;border-top:1px solid var(--rule-soft);font-size:.86rem;color:var(--text-3);max-width:var(--measure)}
+  figcaption b{color:var(--text-2);font-weight:500}
+
+  /* ---- threat surface ---- */
+  .surface{border:1px solid var(--rule);border-radius:2px;overflow:hidden;background:var(--panel)}
+  .srow{display:grid;grid-template-columns:1fr;gap:.3rem 1.25rem;padding:.9rem 1.1rem;border-bottom:1px solid var(--rule-soft);align-items:baseline;transition:background .16s}
+  .srow:last-child{border-bottom:0}
+  .srow:hover{background:var(--panel-2)}
+  @media(min-width:44rem){.srow{grid-template-columns:13.5rem 1fr}}
+  .srow dt{font-family:var(--mono);font-size:.73rem;letter-spacing:.05em;color:var(--coral)}
+  .srow dd{margin:0;color:var(--text-2);font-size:.89rem}
+
+  /* ---- experience ---- */
+  .job{border-left:1px solid var(--rule);padding:0 0 2.3rem clamp(1.1rem,3.5vw,2.5rem);position:relative;margin-left:.3rem}
+  .job:last-child{padding-bottom:0}
+  .job::before{content:"";position:absolute;left:-4px;top:.5rem;width:7px;height:7px;background:var(--amber);border-radius:50%;box-shadow:0 0 0 4px var(--ground)}
+  .job-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.3rem 1.5rem;align-items:baseline}
+  .job-head h3{font-size:1.13rem;font-weight:700;letter-spacing:-.01em}
+  .job .org{color:var(--text-2);font-size:.9rem;margin:.28rem 0 0}
+  .job .when{font-family:var(--mono);font-size:.71rem;letter-spacing:.06em;color:var(--text-3);white-space:nowrap}
+
+  .track{margin-top:1.5rem}
+  .track > h4{font-family:var(--mono);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin:0 0 .75rem;font-weight:500;display:flex;align-items:center;gap:.7rem}
+  .track > h4::after{content:"";flex:1;height:1px;background:var(--rule-soft)}
+  ul.pts{list-style:none;padding:0;margin:0;display:grid;gap:.85rem;max-width:var(--measure)}
+  ul.pts li{position:relative;padding-left:1.4rem;color:var(--text-2);font-size:.93rem}
+  ul.pts li::before{content:"▸";position:absolute;left:0;top:-.05em;color:var(--amber);font-size:.78rem}
+  ul.pts strong{color:var(--text);font-weight:500}
+
+  /* ---- projects ---- */
+  .grid{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:2px;overflow:hidden}
+  @media(min-width:47rem){.grid{grid-template-columns:1fr 1fr}}
+  .card{background:var(--panel);padding:1.55rem 1.45rem 1.7rem;display:flex;flex-direction:column;transition:background .18s;position:relative}
+  .card::after{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:transparent;transition:background .18s}
+  .card:hover{background:var(--panel-2)}
+  .card:hover::after{background:var(--amber)}
+  .card h3{font-size:1.03rem;font-weight:700}
+  .card .stack{font-family:var(--mono);font-size:.65rem;letter-spacing:.05em;color:var(--text-3);margin-top:.5rem;padding-bottom:.8rem;border-bottom:1px solid var(--rule-soft);overflow-wrap:anywhere}
+  .card p{margin:.85rem 0 0;color:var(--text-2);font-size:.89rem}
+  .card .note{margin-top:.65rem;font-size:.85rem;color:var(--text-3)}
+
+  /* ---- patents ---- */
+  .patents{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:2px;overflow:hidden;margin-bottom:2rem}
+  @media(min-width:47rem){.patents{grid-template-columns:1fr 1fr}}
+  .pat{background:var(--panel);padding:1.4rem 1.4rem 1.55rem;position:relative;transition:background .18s}
+  .pat:hover{background:var(--panel-2)}
+  .pat .jur{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--violet);border:1px solid rgba(139,123,255,.35);padding:.16rem .45rem;border-radius:2px}
+  .pat .num{font-family:var(--mono);font-size:1.05rem;color:var(--text);letter-spacing:.02em;margin:.85rem 0 0;font-variant-numeric:tabular-nums}
+  .pat .ttl{margin:.6rem 0 0;color:var(--text-2);font-size:.9rem;line-height:1.5}
+
+  ol.papers{list-style:none;counter-reset:p;padding:0;margin:0;display:grid;gap:1.1rem;max-width:var(--measure)}
+  ol.papers li{counter-increment:p;padding-left:2.5rem;position:relative;color:var(--text-2);font-size:.91rem}
+  ol.papers li::before{content:"[" counter(p) "]";position:absolute;left:0;top:0;font-family:var(--mono);font-size:.71rem;color:var(--amber-dim)}
+  ol.papers cite{font-style:normal;color:var(--text);font-weight:500}
+  .venue{display:block;font-family:var(--mono);font-size:.69rem;color:var(--text-3);margin-top:.28rem;letter-spacing:.03em}
+
+  /* ---- capabilities ---- */
+  .caps{display:grid;gap:0}
+  .cap{display:grid;grid-template-columns:1fr;gap:.35rem 1.7rem;padding:.95rem 0;border-bottom:1px solid var(--rule-soft)}
+  @media(min-width:44rem){.cap{grid-template-columns:11.5rem 1fr}}
+  .cap dt{font-family:var(--mono);font-size:.69rem;letter-spacing:.11em;text-transform:uppercase;color:var(--amber);padding-top:.15em}
+  .cap dd{margin:0;color:var(--text-2);font-size:.89rem}
+
+  /* ---- education ---- */
+  .edu{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:2px;overflow:hidden}
+  @media(min-width:44rem){.edu{grid-template-columns:1fr 1fr}}
+  .edu-item{background:var(--panel);padding:1.35rem 1.3rem 1.45rem}
+  .edu-item h3{font-size:.99rem;font-weight:700}
+  .edu-item p{margin:.42rem 0 0;color:var(--text-2);font-size:.86rem}
+  .edu-item .when{display:block;margin-top:.6rem;font-family:var(--mono);font-size:.69rem;color:var(--text-3);letter-spacing:.05em}
+  .certs{list-style:none;padding:0;margin:1.4rem 0 0;display:flex;flex-wrap:wrap;gap:.45rem}
+  .certs li{font-family:var(--mono);font-size:.67rem;letter-spacing:.04em;padding:.35rem .6rem;border:1px solid var(--rule);border-radius:2px;color:var(--text-3)}
+  .certs li.hl{color:var(--amber);border-color:var(--amber-dim)}
+
+  footer{margin-top:3.5rem;padding-top:1.5rem;border-top:1px solid var(--rule);font-family:var(--mono);font-size:.69rem;letter-spacing:.06em;color:var(--text-3);display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between}
+
+  /* ---- state chips on the threat surface ---- */
+  .chips{display:flex;flex-wrap:wrap;gap:.3rem;align-items:center}
+  .chip{font-family:var(--mono);font-size:.58rem;letter-spacing:.11em;text-transform:uppercase;padding:.16rem .4rem;border-radius:2px;white-space:nowrap;border:1px solid;line-height:1.5}
+  .chip.ex{color:var(--coral);border-color:rgba(255,115,89,.4);background:rgba(255,115,89,.08)}
+  .chip.de{color:var(--cyan);border-color:rgba(79,216,232,.35);background:rgba(79,216,232,.07)}
+  .chip.df{color:var(--green);border-color:rgba(91,217,154,.35);background:rgba(91,217,154,.07)}
+  .legend{display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;margin:0 0 1rem;font-family:var(--mono);font-size:.65rem;letter-spacing:.06em;color:var(--text-3);align-items:center}
+  .legend span{display:inline-flex;align-items:center;gap:.4rem}
+  .swatch{width:9px;height:9px;border-radius:2px;border:1px solid}
+  .swatch.ex{border-color:var(--coral);background:rgba(255,115,89,.25)}
+  .swatch.de{border-color:var(--cyan);background:rgba(79,216,232,.25)}
+  .swatch.df{border-color:var(--green);background:rgba(91,217,154,.25)}
+  @media(min-width:60rem){.srow{grid-template-columns:13.5rem 1fr 15rem}.srow .chips{justify-content:flex-end}}
+
+  /* ---- figure numbering ---- */
+  .fignum{font-family:var(--mono);font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin:0 0 1.1rem;display:flex;align-items:center;gap:.7rem}
+  .fignum::after{content:"";flex:1;height:1px;background:var(--rule-soft)}
+  figure + figure{margin-top:1.5rem}
+
+  /* ---- case study panel ---- */
+  .case{border:1px solid var(--rule);background:var(--panel);border-radius:2px;margin-top:1.5rem;overflow:hidden}
+  .case-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem 1rem;padding:1.15rem 1.25rem;border-bottom:1px solid var(--rule-soft)}
+  .case-top h3{font-size:1.02rem;font-weight:700}
+  .case-top .dur{font-family:var(--mono);font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;color:var(--amber);border:1px solid var(--amber-dim);padding:.18rem .45rem;border-radius:2px}
+  .case-body{display:grid;gap:0}
+  .crow{display:grid;grid-template-columns:1fr;gap:.25rem 1.5rem;padding:.85rem 1.25rem;border-bottom:1px solid var(--rule-soft)}
+  .crow:last-child{border-bottom:0}
+  @media(min-width:44rem){.crow{grid-template-columns:8rem 1fr}}
+  .crow dt{font-family:var(--mono);font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);padding-top:.2em}
+  .crow dd{margin:0;color:var(--text-2);font-size:.9rem}
+
+  /* ---- patent document motif ---- */
+  .pat{position:relative}
+  .pat::before,.pat::after{content:"";position:absolute;width:11px;height:11px;border:1px solid var(--amber-dim);pointer-events:none}
+  .pat::before{top:.75rem;right:.75rem;border-left:0;border-bottom:0}
+  .pat::after{bottom:.75rem;right:.75rem;border-left:0;border-top:0}
+  .pat .num{position:relative;padding-bottom:.7rem}
+  .pat .num::after{content:"";position:absolute;left:0;bottom:0;width:2.5rem;height:1px;background:var(--amber)}
+
+  /* ---- card lift ---- */
+  .card,.pat,.edu-item{will-change:auto}
+  .card:hover h3{color:var(--amber)}
+
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+  /* ---- print ---- */
+  @media print{
+    :root{--ground:#fff;--panel:#fff;--panel-2:#fff;--rule:#bbb;--rule-soft:#ddd;--text:#111;--text-2:#333;--text-3:#666;--amber:#8a5c00;--amber-dim:#c8a45e}
+    body{background:#fff;color:#111}
+    #field,#rail,#prog{display:none!important}
+    .hero{padding-top:0}
+    section{break-inside:avoid}
+    .card,.pat,figure,.case{break-inside:avoid}
+    a{color:#111}
+  }
+</style>
+</head>
+<body>
+<div id="prog"></div>
+
+<nav id="rail" aria-label="Sections">
+  <a href="#surface"><i></i><span>Threat surface</span></a>
+  <a href="#chain"><i></i><span>Method</span></a>
+  <a href="#experience"><i></i><span>Experience</span></a>
+  <a href="#builds"><i></i><span>Builds</span></a>
+  <a href="#research"><i></i><span>Research</span></a>
+  <a href="#capabilities"><i></i><span>Capabilities</span></a>
+  <a href="#education"><i></i><span>Education</span></a>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero">
+    <canvas id="field" height="520" aria-hidden="true"></canvas>
+    <span class="status"><span class="dot"></span> Open to AI security roles · Bengaluru</span>
+    <h1>Parin<br><em>Shah</em></h1>
+    <p class="role-line">
+      <span>AI/ML Security Engineer</span><span>Adversarial ML</span><span>GenAI Red Teaming</span>
+    </p>
+    <p class="thesis">
+      I break machine learning systems on purpose, then build the controls that hold them together.
+      <strong>Four years at Bosch's AIShield</strong> running extraction, poisoning and jailbreak research
+      against production models — and, on my own time, shipping the full-stack AI products that keep me
+      honest about what this costs to actually run.
+    </p>
+    <div class="contact">
+      <a href="mailto:parinjshah0526@gmail.com">parinjshah0526@gmail.com</a>
+      <a href="https://www.linkedin.com/in/parinshah26/">linkedin.com/in/parinshah26</a>
+      <a href="https://github.com/Parin2605">github.com/Parin2605</a>
+    </div>
+  </header>
+
+  <div class="readout">
+    <div class="cell"><b>4</b><span>Years in AI/ML security</span></div>
+    <div class="cell"><b>2</b><span>Patents filed</span></div>
+    <div class="cell"><b>4</b><span>Peer-reviewed papers</span></div>
+    <div class="cell"><b>5</b><span>Hardware targets attacked</span></div>
+    <div class="cell"><b>6</b><span>Systems shipped solo</span></div>
+  </div>
+
+  <section id="surface">
+    <div class="sec-head"><span class="idx">01</span><h2>Threat surface</h2><div class="rule"></div></div>
+    <p class="lede">Attack classes I have personally executed, detected, or built defences against — against real models in production, not benchmarks.</p>
+    <p class="legend"><span><i class="swatch ex"></i>EXECUTED — I ran the attack</span><span><i class="swatch de"></i>DETECTED — I built the detection</span><span><i class="swatch df"></i>DEFENDED — I built the control</span></p>
+    <dl class="surface">
+      <div class="srow"><dt>Model extraction</dt><dd>Executed against production CV models and on customer accelerator hardware; measured accuracy, latency and memory impact before and after.</dd><div class="chips"><span class="chip ex">executed</span></div></div>
+      <div class="srow"><dt>Model evasion</dt><dd>Adversarial input generation against CNNs across CPU, GPU, FPGA and microcontroller deployments.</dd><div class="chips"><span class="chip ex">executed</span></div></div>
+      <div class="srow"><dt>Membership inference</dt><dd>Decision-boundary probing to quantify training-data exposure on cloud-deployed models.</dd><div class="chips"><span class="chip ex">executed</span></div></div>
+      <div class="srow"><dt>Model inversion</dt><dd>Assessed real-world reconstruction and exfiltration risk on enterprise model endpoints.</dd><div class="chips"><span class="chip ex">executed</span></div></div>
+      <div class="srow"><dt>Data poisoning / backdoor</dt><dd>Built detection that identifies poisoned training samples and reports them back into the retraining loop.</dd><div class="chips"><span class="chip ex">executed</span><span class="chip de">detected</span><span class="chip df">defended</span></div></div>
+      <div class="srow"><dt>Time-series perturbation</dt><dd>Researched and operationalised temporal adversarial attacks in industrial and IoT environments, then designed defences for production monitoring pipelines.</dd><div class="chips"><span class="chip ex">executed</span><span class="chip df">defended</span></div></div>
+      <div class="srow"><dt>Prompt injection</dt><dd>GenAI red teaming across LLM applications, including indirect injection and system-instruction boundary testing.</dd><div class="chips"><span class="chip ex">executed</span><span class="chip df">defended</span></div></div>
+      <div class="srow"><dt>Jailbreak / goal hijacking</dt><dd>Scenario-based testing; fine-tuned and shipped a ModernBERT jailbreak-detection classifier to ONNX for GPU serving.</dd><div class="chips"><span class="chip ex">executed</span><span class="chip de">detected</span><span class="chip df">defended</span></div></div>
+      <div class="srow"><dt>PII &amp; data leakage</dt><dd>Information-disclosure and content-safety assessment, with runtime monitoring for sensitive data egress.</dd><div class="chips"><span class="chip ex">executed</span><span class="chip de">detected</span></div></div>
+      <div class="srow"><dt>Insecure output handling</dt><dd>Downstream-impact testing on model outputs consumed by application code and tools.</dd><div class="chips"><span class="chip ex">executed</span></div></div>
+      <div class="srow"><dt>Supply chain</dt><dd>PROSEC and OSS dependency scanning across AI codebases and container images to catch vulnerable libraries and license risk pre-production.</dd><div class="chips"><span class="chip de">detected</span><span class="chip df">defended</span></div></div>
+    </dl>
+  </section>
+
+  <section id="chain">
+    <div class="sec-head"><span class="idx">02</span><h2>Method &amp; evidence</h2><div class="rule"></div></div>
+    <p class="lede">Most AI security work stops at a findings report. The reason I get hired for both halves is that the offensive pass is wired into the control that ships afterwards.</p>
+
+    <p class="fignum">Fig. 01 — Engagement lifecycle</p>
+    <figure>
+      <svg viewBox="0 0 1000 322" role="img" aria-label="The MITRE ATLAS kill chain in six stages — reconnaissance, model access, robustness evaluation, adversarial data crafting, exfiltration and impact, and runtime monitoring — with red-team findings looping back from runtime monitoring into robustness evaluation as guardrails and retests.">
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+          </marker>
+          <marker id="ah-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#F2A93B"/>
+          </marker>
+        </defs>
+
+        <!-- phase captions -->
+        <text x="0" y="18" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1.6" fill="currentColor">OFFENSIVE — WHAT I EXECUTE</text>
+        <line x1="0" y1="30" x2="828" y2="30" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4"/>
+        <text x="1000" y="18" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1.6" fill="#F2A93B">DEFENSIVE — WHAT I BUILD</text>
+        <line x1="860" y1="30" x2="1000" y2="30" stroke="#F2A93B" stroke-width="1"/>
+
+        <!-- stage 01 -->
+        <rect x="0" y="52" width="140" height="92" fill="none" stroke="currentColor" stroke-width="1"/>
+        <text x="12" y="74" font-family="IBM Plex Mono, monospace" font-size="11" fill="#F2A93B">01</text>
+        <text x="12" y="95" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#E8EEF7">Recon</text>
+        <text x="12" y="118" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor">model &amp; artifact</text>
+        <text x="12" y="131" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor">discovery</text>
+
+        <!-- stage 02 -->
+        <rect x="172" y="52" width="140" height="92" fill="none" stroke="currentColor" stroke-width="1"/>
+        <text x="184" y="74" font-family="IBM Plex Mono, monospace" font-size="11" fill="#F2A93B">02</text>
+        <text x="184" y="95" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#E8EEF7">Model access</text>
+        <text x="184" y="118" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor">decision-boundary</text>
+        <text x="184" y="131" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor">probing</text>
+
+        <!-- stage 03 -->
+        <rect x="344" y="52" width="140" height="92" fill="none" stroke="currentColor" stroke-width="1"/>
+        <text x="356" y="74" font-family="IBM Plex Mono, monospace" font-size="11" fill="#F2A93B">03</text>
+        <text x="356" y="95" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#E8EEF7">Robustness eval</text>
+        <text x="356" y="118" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor">extraction · evasion</text>
+        <text x="356" y="131" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor">poisoning</text>
+
+        <!-- stage 04 -->
+        <rect x="516" y="52" width="140" height="92" fill="none" stroke="currentColor" stroke-width="1"/>
+        <text x="528" y="74" font-family="IBM Plex Mono, monospace" font-size="11" fill="#F2A93B">04</text>
+        <text x="528" y="95" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#E8EEF7">Craft adv. data</text>
+        <text x="528" y="118" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor">perturbation &amp;</text>
+        <text x="528" y="131" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor">jailbreak generation</text>
+
+        <!-- stage 05 -->
+        <rect x="688" y="52" width="140" height="92" fill="none" stroke="currentColor" stroke-width="1"/>
+        <text x="700" y="74" font-family="IBM Plex Mono, monospace" font-size="11" fill="#F2A93B">05</text>
+        <text x="700" y="95" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#E8EEF7">Exfil &amp; impact</text>
+        <text x="700" y="118" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor">membership inference</text>
+        <text x="700" y="131" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor">model inversion · PII</text>
+
+        <!-- stage 06 (defensive) -->
+        <rect x="860" y="52" width="140" height="92" fill="rgba(242,169,59,0.07)" stroke="#F2A93B" stroke-width="1"/>
+        <text x="872" y="74" font-family="IBM Plex Mono, monospace" font-size="11" fill="#F2A93B">06</text>
+        <text x="872" y="95" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#E8EEF7">Runtime guard</text>
+        <text x="872" y="118" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#A6B5CC">monitoring · policy</text>
+        <text x="872" y="131" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#A6B5CC">enforcement</text>
+
+        <!-- chain arrows -->
+        <line x1="140" y1="98" x2="166" y2="98" stroke="currentColor" stroke-width="1" marker-end="url(#ah)"/>
+        <line x1="312" y1="98" x2="338" y2="98" stroke="currentColor" stroke-width="1" marker-end="url(#ah)"/>
+        <line x1="484" y1="98" x2="510" y2="98" stroke="currentColor" stroke-width="1" marker-end="url(#ah)"/>
+        <line x1="656" y1="98" x2="682" y2="98" stroke="currentColor" stroke-width="1" marker-end="url(#ah)"/>
+        <line x1="828" y1="98" x2="854" y2="98" stroke="#F2A93B" stroke-width="1" marker-end="url(#ah-a)"/>
+
+        <!-- feedback loop -->
+        <path d="M 930 144 L 930 214 L 414 214 L 414 156" fill="none" stroke="#F2A93B" stroke-width="1" stroke-dasharray="4 4" marker-end="url(#ah-a)"/>
+        <rect x="510" y="204" width="324" height="20" fill="#0E1524"/>
+        <text x="672" y="219" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#F2A93B">findings become guardrail rules, then get retested</text>
+
+        <!-- governance band -->
+        <line x1="0" y1="256" x2="1000" y2="256" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4"/>
+        <text x="0" y="278" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1.2" fill="currentColor">EVERY STAGE MAPPED TO:</text>
+        <text x="182" y="278" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1.2" fill="#4FD8E8">MITRE ATLAS</text>
+        <text x="290" y="278" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1.2" fill="#4FD8E8">OWASP LLM TOP 10</text>
+        <text x="450" y="278" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1.2" fill="#4FD8E8">NIST AI RMF</text>
+        <text x="0" y="303" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1.2" fill="currentColor">DELIVERED AS: THREAT MODELS · SEVERITY-SCORED FINDINGS · REMEDIATION PLANS · RETEST EVIDENCE</text>
+      </svg>
+      <figcaption>
+        <b>The loop is the point.</b> Stages 01–05 are the assessment most teams buy. Stage 06 — the runtime
+        guardrail framework I built — is where those findings turn into monitoring and policy enforcement on
+        live traffic, and the dashed path is the retest that proves a fix held. I own the whole cycle rather
+        than handing over a PDF at stage 05.
+      </figcaption>
+    </figure>
+
+    <p class="fignum">Fig. 02 — Published finding: attack transferability</p>
+    <figure>
+      <svg viewBox="0 0 1000 300" role="img" aria-label="One trained CNN deployed to five targets of decreasing compute — cloud GPU, Jetson Nano edge GPU, Kria KV260 FPGA, Raspberry Pi CPU and an ESP32 microcontroller — with model extraction and evasion attacks transferring successfully to every one of them despite compute falling by orders of magnitude.">
+        <defs>
+          <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+          </marker>
+          <marker id="ah2a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#F2A93B"/>
+          </marker>
+        </defs>
+
+        <!-- source model -->
+        <rect x="0" y="14" width="212" height="62" fill="rgba(242,169,59,0.07)" stroke="#F2A93B" stroke-width="1"/>
+        <text x="14" y="38" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#E8EEF7">One CNN classifier</text>
+        <text x="14" y="58" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#A6B5CC">one model · one attack harness</text>
+
+        <!-- distribution bus -->
+        <path d="M 106 76 L 106 116 L 929 116" fill="none" stroke="#F2A93B" stroke-width="1"/>
+        <line x1="281" y1="116" x2="281" y2="144" stroke="#F2A93B" stroke-width="1" marker-end="url(#ah2a)"/>
+        <line x1="443" y1="116" x2="443" y2="144" stroke="#F2A93B" stroke-width="1" marker-end="url(#ah2a)"/>
+        <line x1="605" y1="116" x2="605" y2="144" stroke="#F2A93B" stroke-width="1" marker-end="url(#ah2a)"/>
+        <line x1="767" y1="116" x2="767" y2="144" stroke="#F2A93B" stroke-width="1" marker-end="url(#ah2a)"/>
+        <line x1="929" y1="116" x2="929" y2="144" stroke="#F2A93B" stroke-width="1" marker-end="url(#ah2a)"/>
+        <text x="120" y="112" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#F2A93B">deployed to →</text>
+
+        <!-- targets -->
+        <rect x="210" y="148" width="142" height="98" fill="none" stroke="currentColor" stroke-width="1"/>
+        <text x="222" y="172" font-family="Archivo, sans-serif" font-size="12.5" font-weight="600" fill="#E8EEF7">Cloud GPU</text>
+        <text x="222" y="189" font-family="IBM Plex Mono, monospace" font-size="9" fill="currentColor">datacentre</text>
+        <line x1="222" y1="200" x2="340" y2="200" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3"/>
+        <text x="222" y="218" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5BD99A">extraction ✓</text>
+        <text x="222" y="234" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5BD99A">profiled ✓</text>
+
+        <rect x="372" y="148" width="142" height="98" fill="none" stroke="currentColor" stroke-width="1"/>
+        <text x="384" y="172" font-family="Archivo, sans-serif" font-size="12.5" font-weight="600" fill="#E8EEF7">Jetson Nano</text>
+        <text x="384" y="189" font-family="IBM Plex Mono, monospace" font-size="9" fill="currentColor">edge GPU</text>
+        <line x1="384" y1="200" x2="502" y2="200" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3"/>
+        <text x="384" y="218" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5BD99A">extraction ✓</text>
+        <text x="384" y="234" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5BD99A">evasion ✓</text>
+
+        <rect x="534" y="148" width="142" height="98" fill="none" stroke="currentColor" stroke-width="1"/>
+        <text x="546" y="172" font-family="Archivo, sans-serif" font-size="12.5" font-weight="600" fill="#E8EEF7">Kria KV260</text>
+        <text x="546" y="189" font-family="IBM Plex Mono, monospace" font-size="9" fill="currentColor">FPGA</text>
+        <line x1="546" y1="200" x2="664" y2="200" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3"/>
+        <text x="546" y="218" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5BD99A">extraction ✓</text>
+        <text x="546" y="234" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5BD99A">evasion ✓</text>
+
+        <rect x="696" y="148" width="142" height="98" fill="none" stroke="currentColor" stroke-width="1"/>
+        <text x="708" y="172" font-family="Archivo, sans-serif" font-size="12.5" font-weight="600" fill="#E8EEF7">Raspberry Pi</text>
+        <text x="708" y="189" font-family="IBM Plex Mono, monospace" font-size="9" fill="currentColor">edge CPU</text>
+        <line x1="708" y1="200" x2="826" y2="200" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3"/>
+        <text x="708" y="218" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5BD99A">extraction ✓</text>
+        <text x="708" y="234" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5BD99A">evasion ✓</text>
+
+        <rect x="858" y="148" width="142" height="98" fill="none" stroke="currentColor" stroke-width="1"/>
+        <text x="870" y="172" font-family="Archivo, sans-serif" font-size="12.5" font-weight="600" fill="#E8EEF7">ESP32</text>
+        <text x="870" y="189" font-family="IBM Plex Mono, monospace" font-size="9" fill="currentColor">microcontroller</text>
+        <line x1="870" y1="200" x2="988" y2="200" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3"/>
+        <text x="870" y="218" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5BD99A">evasion ✓</text>
+        <text x="870" y="234" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5BD99A">benchmarked ✓</text>
+
+        <!-- axis -->
+        <line x1="210" y1="266" x2="990" y2="266" stroke="currentColor" stroke-width="1" stroke-dasharray="3 4" marker-end="url(#ah2)"/>
+        <text x="210" y="288" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.1" fill="currentColor">COMPUTE PER TARGET FALLS BY ORDERS OF MAGNITUDE</text>
+        <text x="1000" y="288" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.1" fill="#5BD99A">ATTACK SUCCESS: UNCHANGED</text>
+      </svg>
+      <figcaption>
+        <b>Shrinking the hardware does not shrink the attack surface.</b> The same extraction and evasion
+        attacks transferred across datacentre GPU, edge GPU, FPGA and microcontroller deployments with model
+        performance intact — which is the result behind two of the publications below, and the reason
+        &ldquo;it only runs on the edge&rdquo; is not a security control.
+      </figcaption>
+    </figure>
+
+    <section class="case" style="padding-top:0" aria-label="Selected engagement">
+      <div class="case-top">
+        <h3>Selected engagement — customer accelerator hardware</h3>
+        <span class="dur">6 months</span>
+      </div>
+      <dl class="case-body">
+        <div class="crow"><dt>Objective</dt><dd>Establish whether an image-classification model deployed on a silicon partner&rsquo;s own accelerator was exposed to extraction in real operating conditions, rather than in a lab replica.</dd></div>
+        <div class="crow"><dt>Method</dt><dd>Executed model extraction against the deployed classifier on the customer&rsquo;s hardware, running the same harness used across the edge testbed above.</dd></div>
+        <div class="crow"><dt>Measured</dt><dd>Inference time, model accuracy and memory footprint — captured before and after the attack, so the cost was expressed in the numbers the customer already tracked.</dd></div>
+        <div class="crow"><dt>Outcome</dt><dd>A measured robustness baseline on production silicon instead of a qualitative risk rating, and a repeatable procedure the team could re-run against future model versions.</dd></div>
+      </dl>
+    </section>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head"><span class="idx">03</span><h2>Experience</h2><div class="rule"></div></div>
+
+    <div class="job">
+      <div class="job-head">
+        <div>
+          <h3>AI/ML Security Engineer</h3>
+          <p class="org">Bosch Global Software Technologies — AIShield · Bengaluru</p>
+        </div>
+        <p class="when">AUG 2023 — PRESENT</p>
+      </div>
+
+      <div class="track">
+        <h4>AI Security</h4>
+        <ul class="pts">
+          <li><strong>End-to-end lifecycle coverage.</strong> Deliver AI security across the full model lifecycle mapped to the MITRE ATLAS kill chain — model access and reconnaissance, adversarial robustness evaluation, adversarial data crafting, exfiltration and impact — through to runtime monitoring and governance compliance.</li>
+          <li><strong>GenAI red-teaming system.</strong> Built a system that evaluates production LLMs across prompt injection, jailbreaks, goal hijacking, PII leakage and insecure output handling, converting ad-hoc probing into structured, repeatable vulnerability assessment.</li>
+          <li><strong>Runtime AI guardrail framework.</strong> Continuously monitors GenAI systems for adversarial inputs, prompt injection, sensitive data leakage and inference anomalies, enabling real-time threat detection and policy enforcement across production AI pipelines.</li>
+          <li><strong>Adversarial testing and validation frameworks.</strong> Measure model robustness, evasion susceptibility and operational readiness of deployed ML systems, with every result mapped to OWASP, MITRE ATLAS and NIST AI RMF.</li>
+          <li><strong>Time-series attack research.</strong> Identified temporal perturbation vulnerabilities in industrial and IoT AI systems and designed targeted defences for production monitoring pipelines.</li>
+          <li><strong>Poisoning and backdoor detection.</strong> Identifies poisoned training samples and generates reports feeding directly back into the retraining loop, alongside dataset outlier detection upstream of it.</li>
+        </ul>
+      </div>
+
+      <div class="track">
+        <h4>Cloud &amp; Platform Security</h4>
+        <ul class="pts">
+          <li><strong>Secure AI deployment on AWS.</strong> Built deployment ecosystems using IAM, S3, ECR, CodePipeline and Inspector with integrated governance, compliance monitoring and cloud security controls.</li>
+          <li><strong>Identity and secrets.</strong> Implemented policy-driven authentication and least-privilege authorisation across AI infrastructure, plus automated key-rotation policies to reduce credential exposure.</li>
+          <li><strong>Supply chain.</strong> Enabled PROSEC and OSS dependency scans across AI codebases and container images, surfacing vulnerable libraries, license risk and supply-chain threats before production.</li>
+          <li><strong>Infrastructure as code.</strong> Provisioned and managed GPU-enabled Kubernetes clusters via Terraform for reproducible AI training and inference environments.</li>
+          <li><strong>Zero-downtime migration.</strong> Led a cloud migration covering re-platforming, security configuration validation, IAM policy enforcement, network hardening and post-migration compliance verification.</li>
+        </ul>
+      </div>
+
+      <div class="track">
+        <h4>Inference &amp; Model Engineering</h4>
+        <ul class="pts">
+          <li><strong>Production ONNX export.</strong> Shipped a fine-tuned ModernBERT jailbreak-detection classifier to GPU inference, resolving PEFT adapter merging, Optimum version incompatibilities and cross-platform execution-provider differences.</li>
+          <li><strong>Performance profiling.</strong> Located compute and memory bottlenecks in CNN, transformer and LLM workloads by benchmarking inference latency, throughput and memory across GPU Kubernetes clusters and edge targets.</li>
+          <li><strong>Model development.</strong> CV and NLP models — image classification, object detection, semantic search — in TensorFlow and PyTorch, with fine-tuned transformers (Llama 3.2, DeBERTa-v3, ModernBERT, Phi) and end-to-end semantic segmentation pipelines.</li>
+          <li><strong>Edge generative AI.</strong> Deployed Mistral via Ollama on Raspberry Pi and quantized TFLite models to Jetson Nano for real-time inference on constrained hardware.</li>
+          <li><strong>Responsible AI as a release gate.</strong> SHAP and LIME explainability, bias mitigation and out-of-distribution evaluation enforced before deployment, not documented after.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <div>
+          <h3>AI/ML Research Intern</h3>
+          <p class="org">Bosch Global Software Technologies — AIShield · Bengaluru</p>
+        </div>
+        <p class="when">JUL 2022 — MAY 2023</p>
+      </div>
+      <ul class="pts" style="margin-top:1.35rem">
+        <li><strong>Proved platform-independent vulnerability.</strong> Reproduced extraction and evasion against custom CNNs on Raspberry Pi, Jetson Nano and a Kria KV260 FPGA with attack success and model performance intact — the basis of two published papers.</li>
+        <li><strong>TinyML adversarial research.</strong> Trained a time-series classification CNN, deployed it to an ESP32 microcontroller, benchmarked it, then characterised vulnerability under severe resource constraints.</li>
+        <li><strong>Cloud-to-edge pipelines.</strong> Managed edge AI workloads on AWS Greengrass, cutting inference latency and cloud dependency, validated end to end on Raspberry Pi.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="builds">
+    <div class="sec-head"><span class="idx">04</span><h2>Independent builds</h2><div class="rule"></div></div>
+    <p class="lede">Built outside work, mostly because I wanted the thing to exist. They are where I own the whole stack — data, model, API, interface, deployment — and where security instincts from the day job become design constraints instead of review comments.</p>
+
+    <div class="grid">
+      <article class="card">
+        <h3>FinMitra</h3>
+        <p class="stack">NODE.JS · EXPRESS · GEMINI 2.5 FLASH · DOCKER · AWS EC2</p>
+        <p>An Indian personal finance app answering the questions banks make deliberately hard: which card actually pays off for your spending, which salary account is worth switching to, how an FD compares to a debt fund after tax.</p>
+        <p class="note">Six modes over one grounded-generation backend. Source attribution is extracted from the model's own grounding metadata and disclaimers enforced server-side — after early testing surfaced misattributed bank rates and invented card variants.</p>
+      </article>
+
+      <article class="card">
+        <h3>InsureCompare</h3>
+        <p class="stack">PYTHON · FASTAPI · HTMX/JINJA · PLUGGABLE LLM</p>
+        <p>One search across health, car, bike and term life insurance, so you enter your details and add-ons once instead of filling the same form on nine insurer websites.</p>
+        <p class="note">A deterministic scoring engine drives the ranking so it stays auditable; the LLM only writes explanations. A crawler feeds public insurer pages through a human review queue, and premiums show as labelled estimates that link out for a binding quote.</p>
+      </article>
+
+      <article class="card">
+        <h3>Agentic Job Application System</h3>
+        <p class="stack">NODE.JS · GMAIL OAUTH · TELEGRAM HITL · GEMINI</p>
+        <p>Watches job-alert email, parses each description, tailors a resume against it, and queues the result for approval.</p>
+        <p class="note">Designed around the constraint rather than past it: nothing auto-submits, every application clears a Telegram approval step, and throughput is capped. Automating the drafting is the useful part; automating the submission is what gets accounts banned.</p>
+      </article>
+
+      <article class="card">
+        <h3>Product Comparison Engine</h3>
+        <p class="stack">PYTHON MICROSERVICES · DOCKER COMPOSE · MULTI-PROVIDER LLM</p>
+        <p>Takes a plain-language requirement — a budget, a use case — and returns specs, trade-offs and prices across retailers, with the strongest pick surfaced rather than buried in a table.</p>
+        <p class="note">The LLM layer is provider-agnostic across Claude, OpenAI and Gemini, backed by a deterministic fallback ranker and an intent-synonym layer so the service still answers when a provider is down.</p>
+      </article>
+
+      <article class="card">
+        <h3>Lyric-Aware Video Pipeline</h3>
+        <p class="stack">FASTAPI · REMOTION/REACT · GEMINI · CONDA</p>
+        <p>Song name in, a 30–60 second reel and a caption explaining what the lyric actually means out — built to make a specific kind of writing publishable at a regular cadence.</p>
+        <p class="note">Segment selection returns three ranked candidates instead of one guess, a separate visual-direction microservice runs alongside the renderer, and Devanagari source text is spliced rather than regenerated, because models quietly corrupt scripts they are weak in.</p>
+      </article>
+
+      <article class="card">
+        <h3>Edge Adversarial Testbed</h3>
+        <p class="stack">TENSORFLOW · TFLITE · RASPBERRY PI · JETSON NANO · KRIA KV260 · ESP32</p>
+        <p>The hardware bench behind two of the publications: one CNN, five deployment targets, one consistent attack harness, to find out whether moving a model to the edge changes its attack surface.</p>
+        <p class="note">It does not, materially — which is the finding. Extraction and evasion transferred across CPU, GPU, FPGA and microcontroller targets with performance intact.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="sec-head"><span class="idx">05</span><h2>Patents &amp; research</h2><div class="rule"></div></div>
+
+    <div class="patents">
+      <article class="pat">
+        <span class="jur">India · Filed</span>
+        <p class="num">202441076710</p>
+        <p class="ttl">Techniques to deploy at least one AI model according to a sequence.</p>
+      </article>
+      <article class="pat">
+        <span class="jur">India · Filed</span>
+        <p class="num">202441049205</p>
+        <p class="ttl">A method to train a pair of neural networks to secure an input communication channel.</p>
+      </article>
+    </div>
+
+    <ol class="papers">
+      <li>
+        <cite><a href="https://arxiv.org/abs/2407.11599">Enhancing TinyML Security: Study of Adversarial Attack Transferability</a></cite> — P. Shah, Y. Govindarajulu, P. Kulkarni, M. Parmar
+        <span class="venue">TINYML FOUNDATION EMEA INNOVATION FORUM 2024 · ARXIV:2407.11599</span>
+      </li>
+      <li>
+        <cite><a href="https://doi.org/10.1109/ICDDS60337.2023.10434373">Exploring AI Attacks on Hardware Accelerated Targets</a></cite> — P. Shah, Y. Govindarajulu, P. Kulkarni, M. Parmar
+        <span class="venue">IEEE ICDDS 2023 · DOI:10.1109/ICDDS60337.2023.10434373</span>
+      </li>
+      <li>
+        <cite><a href="https://doi.org/10.1109/ICOEI56765.2023.10125958">Implementation of Real-Time Object Detection on FPGA</a></cite> — G. Rathod, P. Shah, R. Gajjar, M. I. Patel, N. Gajjar
+        <span class="venue">IEEE ICOEI 2023 · DOI:10.1109/ICOEI56765.2023.10125958</span>
+      </li>
+      <li>
+        <cite><a href="https://doi.org/10.1109/DICCT56244.2023.10110124">Plant Leaf Disease Classification using CNN on FPGA</a></cite> — P. Shah, G. Rathod, R. Gajjar, N. Gajjar, M. I. Patel
+        <span class="venue">IEEE DICCT 2023 · DOI:10.1109/DICCT56244.2023.10110124</span>
+      </li>
+    </ol>
+  </section>
+
+  <section id="capabilities">
+    <div class="sec-head"><span class="idx">06</span><h2>Capabilities</h2><div class="rule"></div></div>
+    <dl class="caps">
+      <div class="cap"><dt>AI Security</dt><dd>Adversarial ML · model extraction, evasion, poisoning · backdoor detection · membership inference · model inversion · GenAI red teaming · prompt injection · jailbreak · goal hijacking · PII leakage · guardrail design and enforcement · threat modelling</dd></div>
+      <div class="cap"><dt>Frameworks</dt><dd>MITRE ATLAS kill chain · OWASP Top 10 for LLM Applications · NIST AI RMF · AI governance and risk management · privacy-by-design · Responsible AI</dd></div>
+      <div class="cap"><dt>ML / Deep Learning</dt><dd>PyTorch · TensorFlow · Keras · scikit-learn · OpenCV · CNNs · transformers · fine-tuning · transfer learning · quantization (INT8/FP16) · SHAP · LIME</dd></div>
+      <div class="cap"><dt>LLM / GenAI</dt><dd>Hugging Face · Llama 3.2 · DeBERTa-v3 · ModernBERT · Phi · Mistral · PEFT · RAG · embeddings and semantic search · prompt and context engineering · agentic workflows · LangChain · Ollama</dd></div>
+      <div class="cap"><dt>Cloud Security</dt><dd>AWS IAM · S3 · ECR · CodePipeline · Inspector · policy-driven least-privilege access · automated key rotation · PROSEC and OSS dependency scanning · container image scanning · compliance monitoring</dd></div>
+      <div class="cap"><dt>Platform &amp; MLOps</dt><dd>Python · Embedded C · FastAPI · Flask · Node.js/Express · REST APIs · microservices · Docker · Kubernetes (GPU-enabled) · OpenShift · Terraform · CI/CD · ONNX · TFLite</dd></div>
+      <div class="cap"><dt>Edge &amp; Hardware</dt><dd>Jetson Nano · Raspberry Pi · Kria KV260 FPGA · ESP32 · PYNQ Z1 · AWS Greengrass · Vitis-AI · roofline and latency profiling</dd></div>
+    </dl>
+  </section>
+
+  <section id="education">
+    <div class="sec-head"><span class="idx">07</span><h2>Education</h2><div class="rule"></div></div>
+    <div class="edu">
+      <div class="edu-item">
+        <h3>M.Tech, Embedded Systems</h3>
+        <p>Institute of Technology, Nirma University — Ahmedabad</p>
+        <span class="when">2021 — 2023 · CGPA 8.63</span>
+      </div>
+      <div class="edu-item">
+        <h3>B.Tech, Electronics &amp; Communication</h3>
+        <p>Vishwakarma Government Engineering College — Ahmedabad</p>
+        <span class="when">2017 — 2021 · CGPA 8.02</span>
+      </div>
+    </div>
+    <ul class="certs">
+      <li class="hl">AWS Cloud Quest: Cloud Practitioner — Credly verified</li>
+      <li>Fundamentals of TinyML — edX (Harvard)</li>
+      <li>Applications of TinyML — edX (Harvard)</li>
+      <li>Deploying TinyML — edX (Harvard)</li>
+      <li>TensorFlow for AI, ML &amp; Deep Learning — Coursera</li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>PARIN SHAH · AI/ML SECURITY ENGINEER · BENGALURU</span>
+    <span>PARINJSHAH0526@GMAIL.COM</span>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- scroll progress + rail ---------- */
+  var prog = document.getElementById('prog');
+  var links = [].slice.call(document.querySelectorAll('#rail a'));
+  var secs = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+
+  function onScroll() {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    prog.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+    var best = -1;
+    for (var i = 0; i < secs.length; i++) {
+      if (secs[i] && secs[i].getBoundingClientRect().top < window.innerHeight * 0.4) best = i;
+    }
+    links.forEach(function (a, i) { a.classList.toggle('on', i === best); });
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(function () { onScroll(); ticking = false; });
+  }, { passive: true });
+  onScroll();
+
+  /* ---------- hero field: embedding space under adversarial sweep ---------- */
+  var cv = document.getElementById('field');
+  if (!cv) return;
+  var ctx = cv.getContext('2d');
+  var W = 0, H = 520, dpr = Math.min(window.devicePixelRatio || 1, 2), nodes = [];
+  var AMBER = '242,169,59', CYAN = '79,216,232', VIOL = '139,123,255';
+
+  function seed() {
+    var count = Math.max(70, Math.min(180, Math.floor(W / 8)));
+    nodes = [];
+    var centers = [
+      { x: W * 0.20, y: H * 0.40, c: CYAN },
+      { x: W * 0.58, y: H * 0.60, c: VIOL },
+      { x: W * 0.87, y: H * 0.28, c: CYAN }
+    ];
+    for (var i = 0; i < count; i++) {
+      var c = centers[i % centers.length];
+      var a = Math.random() * Math.PI * 2;
+      var r = Math.pow(Math.random(), 0.6) * Math.min(W, H) * 0.34;
+      nodes.push({
+        hx: c.x + Math.cos(a) * r,
+        hy: c.y + Math.sin(a) * r * 0.7,
+        col: c.c,
+        rad: 0.7 + Math.random() * 1.5,
+        ph: Math.random() * Math.PI * 2
+      });
+    }
+  }
+
+  function resize() {
+    W = cv.getBoundingClientRect().width;
+    cv.width = W * dpr; cv.height = H * dpr;
+    cv.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    seed();
+  }
+
+  function frame(t) {
+    ctx.clearRect(0, 0, W, H);
+    if (!W) return;
+    var time = t * 0.001;
+    var sweep = ((time * 0.12) % 1.5 - 0.25) * W;
+
+    var pos = nodes.map(function (n) {
+      var d = n.hx - sweep;
+      var infl = Math.exp(-(d * d) / (2 * 70 * 70));
+      var drift = Math.sin(time * 0.5 + n.ph) * 3;
+      return {
+        x: n.hx + infl * Math.sin(time * 2.2 + n.ph) * 17,
+        y: n.hy + drift + infl * Math.cos(time * 1.8 + n.ph) * 14,
+        infl: infl, col: n.col, rad: n.rad
+      };
+    });
+
+    ctx.lineWidth = 0.6;
+    for (var i = 0; i < pos.length; i++) {
+      for (var j = i + 1; j < pos.length; j++) {
+        var dx = pos[i].x - pos[j].x, dy = pos[i].y - pos[j].y;
+        var dist = dx * dx + dy * dy;
+        if (dist < 8800) {
+          var a = (1 - dist / 8800) * 0.2;
+          var hot = Math.max(pos[i].infl, pos[j].infl);
+          ctx.strokeStyle = hot > 0.15
+            ? 'rgba(' + AMBER + ',' + (a * (0.4 + hot)) + ')'
+            : 'rgba(109,128,158,' + (a * 0.75) + ')';
+          ctx.beginPath();
+          ctx.moveTo(pos[i].x, pos[i].y);
+          ctx.lineTo(pos[j].x, pos[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    for (var k = 0; k < pos.length; k++) {
+      var p = pos[k];
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.rad + p.infl * 1.7, 0, Math.PI * 2);
+      ctx.fillStyle = p.infl > 0.1
+        ? 'rgba(' + AMBER + ',' + (0.35 + p.infl * 0.6) + ')'
+        : 'rgba(' + p.col + ',0.42)';
+      ctx.fill();
+    }
+
+    var g = ctx.createLinearGradient(sweep - 62, 0, sweep + 62, 0);
+    g.addColorStop(0, 'rgba(' + AMBER + ',0)');
+    g.addColorStop(0.5, 'rgba(' + AMBER + ',0.17)');
+    g.addColorStop(1, 'rgba(' + AMBER + ',0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(sweep - 62, 0, 124, H);
+
+    if (!reduced) requestAnimationFrame(frame);
+  }
+
+  resize();
+  frame(0);
+
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () { resize(); if (reduced) frame(0); }, 160);
+  });
+})();
+</script>
+</body>
+</html>
