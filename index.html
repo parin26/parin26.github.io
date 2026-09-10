@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parin Shah — AI Security &amp; AI/ML Engineer</title>
+<meta name="description" content="Parin Shah — AI/ML Security Engineer at Bosch (AIShield). Adversarial ML, GenAI red teaming, runtime guardrails, and edge inference optimization. 4 IEEE/arXiv publications, 2 patents.">
+<meta name="author" content="Parin Shah">
+<link rel="canonical" href="https://parin2605.github.io/">
+
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Parin Shah — AI Security &amp; AI/ML Engineer">
+<meta property="og:description" content="Adversarial ML, GenAI red teaming, runtime guardrails, and edge inference optimization. 4 publications, 2 patents.">
+<meta property="og:url" content="https://parin2605.github.io/">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230b1220'/%3E%3Ctext x='50' y='68' font-size='52' font-family='Georgia,serif' font-weight='700' fill='%2360a5fa' text-anchor='middle'%3EPS%3C/text%3E%3C/svg%3E">
+
+<style>
+:root{
+  --bg:#ffffff; --bg-soft:#f6f8fb; --card:#ffffff; --border:#e3e8ef;
+  --ink:#0f172a; --ink-soft:#475569; --ink-faint:#64748b;
+  --accent:#1d4ed8; --accent-soft:#eff4ff; --rule:#cbd5e1;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --maxw:860px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b1220; --bg-soft:#111a2b; --card:#111a2b; --border:#22304a;
+    --ink:#e8eefc; --ink-soft:#a9b8d4; --ink-faint:#8296b8;
+    --accent:#7aa8ff; --accent-soft:#16233b; --rule:#2c3d5c;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b1220; --bg-soft:#111a2b; --card:#111a2b; --border:#22304a;
+  --ink:#e8eefc; --ink-soft:#a9b8d4; --ink-faint:#8296b8;
+  --accent:#7aa8ff; --accent-soft:#16233b; --rule:#2c3d5c;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--sans); font-size:16px; line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ---------- top bar ---------- */
+.topbar{
+  position:sticky; top:0; z-index:20;
+  background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:saturate(1.6) blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.topbar .wrap{display:flex; align-items:center; gap:18px; height:56px}
+.brand{font-weight:700; letter-spacing:-.01em; color:var(--ink); margin-right:auto}
+.brand span{color:var(--accent)}
+.nav{display:flex; gap:20px; font-size:14px}
+.nav a{color:var(--ink-soft)}
+.nav a:hover{color:var(--accent); text-decoration:none}
+@media(max-width:720px){ .nav{display:none} }
+.themebtn{
+  border:1px solid var(--border); background:var(--card); color:var(--ink-soft);
+  border-radius:8px; padding:6px 10px; font:inherit; font-size:13px; cursor:pointer; line-height:1;
+}
+.themebtn:hover{color:var(--accent); border-color:var(--accent)}
+
+/* ---------- hero ---------- */
+.hero{padding:72px 0 46px; border-bottom:1px solid var(--border)}
+.eyebrow{
+  font-family:var(--mono); font-size:12.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--accent); margin:0 0 14px;
+}
+h1{
+  font-family:var(--serif); font-weight:700; letter-spacing:-.02em;
+  font-size:clamp(2.4rem,6vw,3.5rem); line-height:1.05; margin:0 0 16px;
+}
+.tagline{font-size:clamp(1.05rem,2.4vw,1.3rem); color:var(--ink-soft); margin:0 0 8px; max-width:62ch}
+.lede{color:var(--ink-soft); max-width:66ch; margin:18px 0 0}
+.lede strong{color:var(--ink); font-weight:600}
+
+.cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:30px}
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  border:1px solid var(--border); background:var(--card); color:var(--ink);
+  padding:9px 15px; border-radius:9px; font-size:14.5px; font-weight:500;
+}
+.btn:hover{border-color:var(--accent); color:var(--accent); text-decoration:none}
+.btn.primary{background:var(--accent); border-color:var(--accent); color:#fff}
+.btn.primary:hover{color:#fff; opacity:.9}
+
+/* ---------- stats ---------- */
+.stats{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border);
+  border:1px solid var(--border); border-radius:12px; overflow:hidden; margin:46px 0 0}
+.stat{background:var(--card); padding:18px 16px}
+.stat b{display:block; font-family:var(--serif); font-size:1.7rem; line-height:1.1; letter-spacing:-.02em}
+.stat span{font-size:12.5px; color:var(--ink-faint); letter-spacing:.02em}
+@media(max-width:620px){ .stats{grid-template-columns:repeat(2,1fr)} }
+
+/* ---------- sections ---------- */
+section{padding:56px 0; border-bottom:1px solid var(--border)}
+section:last-of-type{border-bottom:0}
+h2{
+  font-family:var(--mono); font-size:12.5px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--accent); margin:0 0 26px; font-weight:600;
+}
+h3{font-size:1.06rem; margin:0 0 3px; letter-spacing:-.01em}
+.muted{color:var(--ink-faint)}
+
+/* ---------- experience ---------- */
+.job{padding:0 0 34px; margin:0 0 34px; border-bottom:1px dashed var(--rule)}
+.job:last-child{border-bottom:0; padding-bottom:0; margin-bottom:0}
+.job-head{display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 12px; margin-bottom:4px}
+.job-head h3{margin:0}
+.where{color:var(--ink-soft); font-size:15px}
+.when{margin-left:auto; font-family:var(--mono); font-size:12.5px; color:var(--ink-faint); white-space:nowrap}
+@media(max-width:620px){ .when{margin-left:0; width:100%} }
+.grouptitle{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--ink-faint); margin:20px 0 8px;
+}
+ul.bullets{margin:0; padding-left:19px}
+ul.bullets li{margin:0 0 9px; color:var(--ink-soft)}
+ul.bullets li strong{color:var(--ink); font-weight:600}
+
+/* ---------- focus cards ---------- */
+.cards{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+@media(max-width:680px){ .cards{grid-template-columns:1fr} }
+.card{border:1px solid var(--border); background:var(--card); border-radius:12px; padding:20px}
+.card h3{margin-bottom:8px}
+.card p{margin:0; color:var(--ink-soft); font-size:14.5px}
+.card .tags{margin-top:14px; display:flex; flex-wrap:wrap; gap:6px}
+.tag{
+  font-family:var(--mono); font-size:11.5px; color:var(--accent);
+  background:var(--accent-soft); border:1px solid var(--border);
+  padding:3px 8px; border-radius:999px;
+}
+
+/* ---------- publications ---------- */
+ol.pubs{margin:0; padding-left:20px}
+ol.pubs li{margin:0 0 18px}
+ol.pubs .venue{display:block; color:var(--ink-faint); font-size:14px; margin-top:2px}
+.pubtitle{font-weight:600; color:var(--ink)}
+
+/* ---------- patents ---------- */
+.patent{border-left:3px solid var(--accent); padding:2px 0 2px 15px; margin:0 0 18px}
+.patent .no{font-family:var(--mono); font-size:12.5px; color:var(--ink-faint); display:block}
+
+/* ---------- skills ---------- */
+.skillrow{display:grid; grid-template-columns:190px 1fr; gap:10px 18px; padding:12px 0; border-bottom:1px solid var(--border)}
+.skillrow:last-child{border-bottom:0}
+.skillrow dt{font-weight:600; font-size:14.5px}
+.skillrow dd{margin:0; color:var(--ink-soft); font-size:14.5px}
+@media(max-width:620px){ .skillrow{grid-template-columns:1fr; gap:4px} }
+
+/* ---------- education ---------- */
+.two{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+@media(max-width:680px){ .two{grid-template-columns:1fr} }
+
+/* ---------- footer ---------- */
+footer{padding:40px 0 60px; color:var(--ink-faint); font-size:14px}
+footer .links{display:flex; flex-wrap:wrap; gap:16px; margin-bottom:14px}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">Parin <span>Shah</span></a>
+    <nav class="nav">
+      <a href="#experience">Experience</a>
+      <a href="#focus">Focus</a>
+      <a href="#research">Research</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="themebtn" id="themebtn" type="button" aria-label="Toggle colour theme">Theme</button>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">AI Security &middot; Adversarial ML &middot; Edge Inference</p>
+    <h1>Parin Shah</h1>
+    <p class="tagline">I break AI systems on purpose, then build the guardrails that keep them standing in production.</p>
+    <p class="lede">
+      AI/ML Security Engineer at <strong>Bosch Global Software Technologies &mdash; AIShield</strong>, with
+      3+ years spanning adversarial robustness, GenAI red teaming, runtime guardrails, and inference
+      optimization on FPGAs, NPUs and GPU clusters. Work mapped to <strong>MITRE ATLAS</strong>,
+      <strong>OWASP</strong> and <strong>NIST AI RMF</strong>. Author of 4 peer-reviewed / preprint papers
+      and co-inventor on 2 filed patents.
+    </p>
+
+    <div class="cta">
+      <a class="btn primary" href="#contact">Get in touch</a>
+      <a class="btn" href="https://www.linkedin.com/in/parinshah26/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/Parin2605" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="resume/Parin_Shah_AI_Security_Engineer.pdf">Résumé &mdash; AI Security</a>
+      <a class="btn" href="resume/Parin_Shah_AIMLPerformanceEngineer.pdf">Résumé &mdash; AI/ML Performance</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>3+</b><span>Years in AI security</span></div>
+      <div class="stat"><b>4</b><span>Publications</span></div>
+      <div class="stat"><b>2</b><span>Patents filed</span></div>
+      <div class="stat"><b>M.Tech</b><span>Embedded Systems</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="experience">
+  <div class="wrap">
+    <h2>Experience</h2>
+
+    <article class="job">
+      <div class="job-head">
+        <h3>AI/ML Security Engineer</h3>
+        <span class="where">Bosch Global Software Technologies &mdash; AIShield, Bengaluru</span>
+        <span class="when">Aug 2023 &mdash; Present</span>
+      </div>
+
+      <p class="grouptitle">AI Security &amp; Adversarial ML</p>
+      <ul class="bullets">
+        <li>Deliver <strong>end-to-end AI security across the full model lifecycle</strong>, mapped to the MITRE ATLAS kill chain &mdash; reconnaissance and model access, adversarial robustness evaluation, adversarial data crafting, exfiltration and impact, through to runtime monitoring and governance compliance.</li>
+        <li>Apply <strong>model extraction and evasion techniques</strong> against enterprise and cloud-deployed models, systematically probing decision boundaries, membership-inference susceptibility and model-inversion risk to quantify real-world exfiltration and bypass exposure.</li>
+        <li>Research and operationalise <strong>time-series adversarial attacks</strong> against models in industrial and IoT settings, identifying temporal perturbation vulnerabilities and designing targeted defences for production monitoring pipelines.</li>
+        <li>Built <strong>adversarial testing and AI validation frameworks</strong> that assess model robustness, evasion susceptibility and operational readiness, with findings mapped to OWASP, MITRE ATLAS and NIST AI RMF.</li>
+        <li>Developed a <strong>GenAI red-teaming system</strong> that evaluates production LLMs across prompt injection, jailbreaks, goal hijacking, PII leakage and insecure output handling.</li>
+        <li>Developed an <strong>end-to-end runtime AI guardrail framework</strong> that continuously monitors GenAI systems for adversarial inputs, prompt injection, sensitive-data leakage and inference anomalies &mdash; enabling real-time detection, policy enforcement and latency/quality SLA enforcement across production AI pipelines.</li>
+      </ul>
+
+      <p class="grouptitle">Cloud Security &amp; Infrastructure</p>
+      <ul class="bullets">
+        <li>Build secure, scalable AI deployment ecosystems on <strong>AWS</strong> (IAM, S3, ECR, CodePipeline, Inspector) with integrated governance, compliance monitoring and security controls.</li>
+        <li>Implemented <strong>policy-driven identity, authentication and authorisation</strong> frameworks, plus automated key-rotation policies enforcing cryptographic hygiene and reducing credential exposure across production AI infrastructure.</li>
+        <li>Enabled <strong>PROSEC and OSS dependency scanning</strong> across AI codebases and container images, surfacing vulnerable third-party libraries, licence risk and supply-chain threats before production deployment.</li>
+        <li>Provision and manage <strong>GPU-enabled Kubernetes clusters via Terraform</strong>, automating infrastructure-as-code for reproducible AI training and inference environments.</li>
+        <li>Led a <strong>zero-downtime cloud migration</strong> covering infrastructure re-platforming, security configuration validation, IAM policy enforcement, network hardening and post-migration compliance verification.</li>
+        <li>Implemented automated <strong>CI/CD workflows</strong> (AWS CodePipeline, Git) for model validation and deployment, cutting manual validation effort and improving operational reliability.</li>
+      </ul>
+
+      <p class="grouptitle">Inference Performance &amp; Optimization</p>
+      <ul class="bullets">
+        <li>Benchmark and profile <strong>CNNs, Transformers and LLMs</strong> for inference latency, throughput and memory utilisation across GPU-enabled Kubernetes clusters and edge accelerators, isolating compute and memory bottlenecks.</li>
+        <li>Deploy and validate <strong>quantized TFLite and ONNX models</strong> in edge inference pipelines on AWS Greengrass, demonstrating end-to-end optimization from model graph down to target hardware.</li>
+        <li>Benchmark models across <strong>FPGA (Kria KV260) and cloud GPU targets</strong> with custom profiling tooling, evaluating roofline behaviour, latency/throughput trade-offs and memory access patterns under production-like workloads.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <div class="job-head">
+        <h3>AI/ML Research Intern</h3>
+        <span class="where">Bosch Global Software Technologies &mdash; AIShield, Bengaluru</span>
+        <span class="when">Jul 2022 &mdash; May 2023</span>
+      </div>
+      <ul class="bullets">
+        <li>Simulated and executed <strong>model extraction and evasion attacks on FPGA-deployed models</strong> (Kria KV260), proving cross-device transferability of adversarial vulnerability across hardware targets &mdash; the work behind two of the publications below.</li>
+        <li>Designed <strong>edge inference pipelines on AWS Greengrass</strong>, reducing inference latency and demonstrating cloud-to-edge AI deployment in production-shaped environments.</li>
+        <li>Benchmarked models across <strong>FPGA, Raspberry Pi, Jetson Nano and ESP32</strong> targets, profiling latency, throughput and memory footprint under varied quantization, precision and tiling strategies.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section id="focus">
+  <div class="wrap">
+    <h2>What I work on</h2>
+    <div class="cards">
+
+      <div class="card">
+        <h3>GenAI red teaming</h3>
+        <p>Structured adversarial evaluation of production LLMs &mdash; prompt injection, jailbreaks, goal hijacking, PII leakage and insecure output handling &mdash; turned into repeatable vulnerability assessments rather than one-off prompt hunting.</p>
+        <div class="tags"><span class="tag">LLM evals</span><span class="tag">Prompt injection</span><span class="tag">OWASP LLM</span></div>
+      </div>
+
+      <div class="card">
+        <h3>Runtime AI guardrails</h3>
+        <p>Continuous monitoring for adversarial inputs, injection attempts, sensitive-data leakage and inference anomalies, with policy enforcement and latency/quality SLAs applied inline across production GenAI pipelines.</p>
+        <div class="tags"><span class="tag">Guardrails</span><span class="tag">PII detection</span><span class="tag">Observability</span></div>
+      </div>
+
+      <div class="card">
+        <h3>Adversarial ML</h3>
+        <p>Model extraction, evasion, poisoning, membership inference and model inversion &mdash; including time-series attacks against industrial and IoT models, and defences designed for the monitoring pipelines that consume them.</p>
+        <div class="tags"><span class="tag">MITRE ATLAS</span><span class="tag">NIST AI RMF</span><span class="tag">Robustness</span></div>
+      </div>
+
+      <div class="card">
+        <h3>Edge &amp; accelerator inference</h3>
+        <p>Quantization and compression to INT8/FP16, ONNX and TFLite deployment, and roofline-level profiling across FPGA, NPU, Jetson and GPU targets &mdash; where the security question and the latency question turn out to be the same question.</p>
+        <div class="tags"><span class="tag">FPGA / Kria KV260</span><span class="tag">ONNX</span><span class="tag">Quantization</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <h2>Publications</h2>
+    <ol class="pubs">
+      <li>
+        <span class="pubtitle">Enhancing TinyML Security: Study of Adversarial Attack Transferability</span>
+        <span class="venue">P. Shah, Y. Govindarajulu, P. Kulkarni, M. Parmar &middot; tinyML Foundation EMEA Innovation Forum, 2024 &middot;
+        <a href="https://arxiv.org/abs/2407.11599" target="_blank" rel="noopener">arXiv:2407.11599</a></span>
+      </li>
+      <li>
+        <span class="pubtitle">Exploring AI Attacks on Hardware Accelerated Targets</span>
+        <span class="venue">P. Shah, Y. Govindarajulu, P. Kulkarni, M. Parmar &middot; IEEE 2nd Int. Conf. on Data, Decision and Systems (ICDDS), Dec 2023 &middot;
+        <a href="https://doi.org/10.1109/ICDDS60337.2023.10434373" target="_blank" rel="noopener">10.1109/ICDDS60337.2023.10434373</a></span>
+      </li>
+      <li>
+        <span class="pubtitle">Implementation of Real-Time Object Detection on FPGA</span>
+        <span class="venue">G. Rathod, P. Shah, R. Gajjar, M. I. Patel, N. Gajjar &middot; IEEE 7th Int. Conf. on Trends in Electronics and Informatics (ICOEI), Apr 2023 &middot;
+        <a href="https://doi.org/10.1109/ICOEI56765.2023.10125958" target="_blank" rel="noopener">10.1109/ICOEI56765.2023.10125958</a></span>
+      </li>
+      <li>
+        <span class="pubtitle">Plant Leaf Disease Classification using Convolutional Neural Network on FPGA</span>
+        <span class="venue">P. Shah, G. Rathod, R. Gajjar, N. Gajjar, M. I. Patel &middot; IEEE Int. Conf. on Device Intelligence, Computing and Communication Technologies (DICCT), Mar 2023 &middot;
+        <a href="https://doi.org/10.1109/DICCT56244.2023.10110124" target="_blank" rel="noopener">10.1109/DICCT56244.2023.10110124</a></span>
+      </li>
+    </ol>
+
+    <h2 style="margin-top:44px">Patents</h2>
+    <div class="patent">
+      <span class="no">IN 202441076710</span>
+      Techniques to deploy at least one AI model according to a sequence.
+    </div>
+    <div class="patent">
+      <span class="no">IN 202441049205</span>
+      A method to train a pair of neural networks to secure an input communication channel.
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Technical skills</h2>
+    <dl>
+      <div class="skillrow"><dt>AI Security</dt><dd>Adversarial ML, model extraction &amp; evasion, poisoning, membership inference, model inversion, prompt-injection defence, jailbreak detection, PII detection, inference isolation, model access control</dd></div>
+      <div class="skillrow"><dt>AI Governance</dt><dd>MITRE ATLAS, OWASP (incl. LLM Top 10), NIST AI RMF, responsible-AI guardrails, threat modelling, privacy-by-design, AI risk management</dd></div>
+      <div class="skillrow"><dt>GenAI &amp; LLMs</dt><dd>LLM fine-tuning, red teaming, evaluation harnesses, Llama 3.2, DeBERTa-v3, ModernBERT, Microsoft Phi, Hugging Face</dd></div>
+      <div class="skillrow"><dt>Deep Learning</dt><dd>PyTorch, TensorFlow, Keras, ONNX Runtime, TFLite, OpenCV &middot; CNNs, Transformers, LLMs</dd></div>
+      <div class="skillrow"><dt>Inference Optimization</dt><dd>Quantization (INT8/FP16), mixed precision, operator fusion, latency/throughput profiling, roofline analysis, regression &amp; benchmarking frameworks</dd></div>
+      <div class="skillrow"><dt>Hardware Targets</dt><dd>FPGA (Xilinx Kria KV260), NPU &amp; edge accelerators, Jetson Nano, Raspberry Pi, ESP32, AWS cloud GPU clusters</dd></div>
+      <div class="skillrow"><dt>Cloud &amp; MLOps</dt><dd>AWS (IAM, S3, ECR, CodePipeline, Inspector, EKS, Greengrass), Kubernetes, OpenShift, Docker, Terraform, CI/CD</dd></div>
+      <div class="skillrow"><dt>Programming</dt><dd>Python, Embedded C &middot; Embedded Linux</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2>Education &amp; certifications</h2>
+    <div class="two">
+      <div class="card">
+        <h3>M.Tech &mdash; Embedded Systems</h3>
+        <p class="muted">Nirma University &middot; 2021&ndash;2023 &middot; CGPA 8.63</p>
+      </div>
+      <div class="card">
+        <h3>B.Tech &mdash; Electronics &amp; Communication</h3>
+        <p class="muted">VGEC Ahmedabad &middot; 2017&ndash;2021 &middot; CGPA 8.02</p>
+      </div>
+    </div>
+    <ul class="bullets" style="margin-top:22px">
+      <li>AWS Cloud Quest: Cloud Practitioner &mdash; Credly verified</li>
+      <li>Introduction to TensorFlow for AI, Machine Learning &amp; Deep Learning &mdash; Coursera</li>
+      <li>Fundamentals of TinyML &middot; Applications of TinyML &middot; Deploying TinyML &mdash; edX (Harvard)</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p class="lede" style="margin-top:0">
+      Open to conversations about AI security, GenAI red teaming, guardrail engineering and
+      inference optimization roles.
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="mailto:parinjshah0526@gmail.com">parinjshah0526@gmail.com</a>
+      <a class="btn" href="https://www.linkedin.com/in/parinshah26/" target="_blank" rel="noopener">linkedin.com/in/parinshah26</a>
+      <a class="btn" href="https://github.com/Parin2605" target="_blank" rel="noopener">github.com/Parin2605</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="resume/Parin_Shah_AI_Security_Engineer.pdf">Résumé — AI Security</a>
+      <a href="resume/Parin_Shah_AIMLPerformanceEngineer.pdf">Résumé — AI/ML Performance</a>
+      <a href="#top">Back to top</a>
+    </div>
+    <p>&copy; <span id="yr">2026</span> Parin Shah. Built as a static page, hosted on GitHub Pages.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root = document.documentElement, btn = document.getElementById('themebtn');
+  var saved = null;
+  try { saved = localStorage.getItem('theme'); } catch (e) {}
+  if (saved === 'dark' || saved === 'light') root.setAttribute('data-theme', saved);
+  btn.addEventListener('click', function(){
+    var isDark = root.getAttribute('data-theme') === 'dark' ||
+      (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+
+</body>
+</html>
