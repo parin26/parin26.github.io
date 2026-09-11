@@ -3,270 +3,278 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Parin Shah — AI/ML Engineer, AI Security, Cloud Security &amp; DevOps, Embedded AI. Bengaluru. 2 patents, 4 publications.">
+<meta name="description" content="Parin Shah — AI/ML engineering, AI security, cloud security and DevOps, and embedded AI. Bengaluru, India. 2 patents, 4 publications.">
 <meta name="author" content="Parin Shah">
 <link rel="canonical" href="https://parin26.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Parin Shah — AI/ML, AI Security, Cloud &amp; Embedded">
-<meta property="og:description" content="I build machine learning systems, break them on purpose, and ship the infrastructure that keeps them standing in production.">
+<meta property="og:description" content="Four domains on one die: model engineering, adversarial security, cloud and DevOps, and inference on hardware small enough to hold.">
 <meta property="og:url" content="https://parin26.github.io/">
 <meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23080D17%22/><text y=%22.9em%22 x=%2250%22 text-anchor=%22middle%22 font-size=%2270%22 font-family=%22monospace%22 font-weight=%22bold%22 fill=%22%23F2A93B%22>P</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%2304060E%22/><rect x=%2222%22 y=%2222%22 width=%2256%22 height=%2256%22 fill=%22none%22 stroke=%22%232FE3D0%22 stroke-width=%228%22/></svg>">
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Parin Shah — Adversarial ML</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 
 <style>
-  :root {
-    --void:#04070D; --ground:#080D17; --panel:#0E1524; --panel-2:#131C2E; --panel-3:#18233A;
-    --rule:#1C2841; --rule-soft:#141D2F;
-    --text:#E8EEF7; --text-2:#A6B5CC; --text-3:#6D809E;
-    --amber:#F2A93B; --amber-dim:#7A5A1E; --coral:#FF7359; --cyan:#4FD8E8; --violet:#8B7BFF; --green:#5BD99A;
-    --display:"Archivo","Helvetica Neue",Arial,sans-serif;
-    --sans:"IBM Plex Sans","Segoe UI",Helvetica,Arial,sans-serif;
+  :root{
+    --sub:#04060E; --die:#0A0E1C; --die2:#0F142A; --trace:#18213C; --trace2:#111832;
+    --sig:#2FE3D0; --sig-dim:#12564F; --pad:#FFC24B; --pad-dim:#6B5220;
+    --via:#8A7BFF; --fault:#FF5C7A; --ok:#4FE3A8;
+    --txt:#E9EEFB; --txt2:#9DB0CE; --txt3:#5F7396;
+    --disp:"Sora","Helvetica Neue",Arial,sans-serif;
+    --body:"Plus Jakarta Sans","Segoe UI",Helvetica,Arial,sans-serif;
     --mono:"IBM Plex Mono","SF Mono",Consolas,monospace;
-    --measure:66ch;
-    --pad:clamp(1.1rem,4vw,3rem);
+    --measure:64ch;
   }
   *{box-sizing:border-box}
-  body{background:var(--ground);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  .wrap{max-width:64rem;margin:0 auto;padding:0 var(--pad) 4rem}
-  a{color:var(--amber);text-decoration:none}
-  a:focus-visible{outline:1px solid var(--amber);outline-offset:3px}
-  h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance}
+  body{background:var(--sub);color:var(--txt);font-family:var(--body);font-size:16px;line-height:1.62;
+       -webkit-font-smoothing:antialiased;overflow-x:hidden;padding:0 clamp(1rem,4vw,2.5rem)}
+  .wrap{max-width:66rem;margin:0 auto;padding-block:0 4rem}
+  a{color:var(--sig);text-decoration:none}
+  a:focus-visible{outline:1px solid var(--sig);outline-offset:3px}
+  h1,h2,h3{font-family:var(--disp);margin:0;text-wrap:balance;letter-spacing:-.02em}
 
-  /* ---- scroll progress ---- */
-  #prog{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--amber-dim),var(--amber));z-index:50}
-
-  /* ---- side rail ---- */
-  #rail{position:fixed;left:1.5rem;top:50%;transform:translateY(-50%);z-index:40;display:none;flex-direction:column;gap:.85rem}
-  @media(min-width:86rem){#rail{display:flex}}
-  #rail a{display:flex;align-items:center;gap:.6rem;color:var(--text-3);font-family:var(--mono);font-size:.63rem;letter-spacing:.12em;text-transform:uppercase}
-  #rail i{display:block;width:16px;height:1px;background:currentColor;transition:width .2s,background .2s}
+  /* ---------- pad ring rail ---------- */
+  #prog{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--sig-dim),var(--sig));z-index:60;box-shadow:0 0 12px rgba(47,227,208,.6)}
+  #rail{position:fixed;left:1.15rem;top:50%;transform:translateY(-50%);z-index:50;display:none;flex-direction:column;gap:.9rem}
+  @media(min-width:88rem){#rail{display:flex}}
+  #rail a{display:flex;align-items:center;gap:.55rem;color:var(--txt3);font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase}
+  #rail i{width:9px;height:9px;border:1px solid currentColor;display:block;transition:background .2s,border-color .2s,box-shadow .2s}
   #rail a span{opacity:0;transition:opacity .2s}
   #rail a:hover span,#rail a.on span{opacity:1}
-  #rail a.on{color:var(--amber)}
-  #rail a.on i{width:26px}
+  #rail a.on{color:var(--sig)}
+  #rail a.on i{background:var(--sig);box-shadow:0 0 10px rgba(47,227,208,.7)}
 
-  /* ---- hero ---- */
-  .hero{position:relative;padding:clamp(2.75rem,8vw,5.5rem) 0 clamp(2.25rem,5vw,3.25rem);isolation:isolate}
-  #field{position:absolute;inset:-2rem calc(var(--pad)*-1) 0;width:calc(100% + var(--pad)*2);z-index:-1;opacity:.9;
-    mask-image:linear-gradient(to bottom,#000 0%,#000 52%,transparent 100%);
-    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 52%,transparent 100%)}
-  .status{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--mono);font-size:.67rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-3);border:1px solid var(--rule);background:rgba(14,21,36,.8);padding:.35rem .7rem;border-radius:2px}
-  .dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(91,217,154,.16)}
-  .hero h1{font-size:clamp(2.9rem,11vw,6.4rem);font-weight:800;line-height:.9;letter-spacing:-.045em;margin:1.3rem 0 0;text-transform:uppercase}
-  .hero h1 em{font-style:normal;color:transparent;-webkit-text-stroke:1.2px var(--amber)}
-  .role-line{font-family:var(--mono);font-size:clamp(.71rem,2.1vw,.87rem);letter-spacing:.13em;text-transform:uppercase;color:var(--amber);margin:1.25rem 0 0;display:flex;flex-wrap:wrap;gap:.35rem .85rem}
-  .role-line span:not(:last-child)::after{content:" /";color:var(--amber-dim);margin-left:.5rem}
-  .thesis{max-width:var(--measure);color:var(--text-2);font-size:clamp(1rem,2.2vw,1.09rem);margin:1.8rem 0 0}
-  .thesis strong{color:var(--text);font-weight:500}
-  .contact{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem}
-  .contact a{font-family:var(--mono);font-size:.75rem;padding:.5rem .85rem;border:1px solid var(--rule);background:var(--panel);border-radius:2px;color:var(--text-2);transition:border-color .18s,color .18s,background .18s}
-  .contact a:hover{border-color:var(--amber);color:var(--amber);background:var(--panel-2)}
+  /* ---------- hero die ---------- */
+  .hero{position:relative;padding-block:clamp(2.5rem,7vw,4.5rem) clamp(2rem,4vw,3rem);isolation:isolate}
+  #die{position:fixed;inset:0;width:100vw;height:100vh;z-index:-3;opacity:.85;pointer-events:none}
+  #vig{position:fixed;inset:0;z-index:-2;pointer-events:none;
+       background:radial-gradient(120% 80% at 50% 0%,rgba(4,6,14,.15),rgba(4,6,14,.82) 62%,var(--sub) 100%)}
+  .status{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--mono);font-size:.63rem;letter-spacing:.16em;
+          text-transform:uppercase;color:var(--txt3);border:1px solid var(--trace);background:rgba(10,14,28,.85);padding:.35rem .7rem}
+  .dot{width:5px;height:5px;background:var(--ok);box-shadow:0 0 0 3px rgba(79,227,168,.14)}
+  .hero h1{font-size:clamp(2.9rem,11.5vw,7rem);font-weight:800;line-height:.88;margin:1.15rem 0 0;letter-spacing:-.04em}
+  .hero h1 em{font-style:normal;color:transparent;-webkit-text-stroke:1.4px var(--sig)}
+  .role-line{font-family:var(--mono);font-size:clamp(.66rem,2vw,.8rem);letter-spacing:.16em;text-transform:uppercase;
+             color:var(--sig);margin:1.35rem 0 0;display:flex;flex-wrap:wrap;gap:.3rem .8rem}
+  .role-line span:not(:last-child)::after{content:" ▚";color:var(--sig-dim);margin-left:.45rem}
+  .thesis{max-width:var(--measure);color:var(--txt2);font-size:clamp(1rem,2.1vw,1.08rem);margin:1.7rem 0 0}
+  .thesis strong{color:var(--txt);font-weight:600}
+  .contact{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.9rem}
+  .contact a{font-family:var(--mono);font-size:.72rem;padding:.5rem .85rem;border:1px solid var(--trace);
+             background:var(--die);color:var(--txt2);transition:.18s;clip-path:polygon(7px 0,100% 0,100% calc(100% - 7px),calc(100% - 7px) 100%,0 100%,0 7px)}
+  .contact a:hover{border-color:var(--sig);color:var(--sig);background:var(--die2);box-shadow:0 0 18px rgba(47,227,208,.14)}
 
-  /* ---- readout ---- */
-  .readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(8rem,1fr));border:1px solid var(--rule);background:var(--panel);border-radius:2px;overflow:hidden}
-  .cell{padding:1.1rem 1rem 1.2rem;border-right:1px solid var(--rule-soft)}
+  /* ---------- register readout ---------- */
+  .readout{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(8rem,1fr));border:1px solid var(--trace);background:rgba(10,14,28,.86);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+  .readout::before,.readout::after{content:"";position:absolute;width:13px;height:13px;border:1px solid var(--pad);opacity:.55;pointer-events:none}
+  .readout::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+  .readout::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+  .cell{padding:1.05rem 1rem 1.15rem;border-right:1px solid var(--trace2);position:relative}
   .cell:last-child{border-right:0}
-  .cell b{display:block;font-family:var(--display);font-size:1.95rem;font-weight:700;line-height:1;color:var(--amber);font-variant-numeric:tabular-nums}
-  .cell span{display:block;margin-top:.5rem;font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);line-height:1.4}
+  .cell::before{content:"";position:absolute;top:0;left:1rem;width:14px;height:2px;background:var(--pad)}
+  .cell b{display:block;font-family:var(--disp);font-size:2rem;font-weight:800;line-height:1;color:var(--sig);font-variant-numeric:tabular-nums}
+  .cell span{display:block;margin-top:.5rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--txt3);line-height:1.45}
 
-  /* ---- sections ---- */
-  section{padding-top:clamp(3rem,6vw,4.5rem);scroll-margin-top:2rem}
-  .sec-head{display:flex;align-items:center;gap:1rem;margin-bottom:1.8rem}
-  .sec-head .idx{font-family:var(--mono);font-size:.67rem;letter-spacing:.12em;color:var(--amber);border:1px solid var(--amber-dim);padding:.2rem .45rem;border-radius:2px}
-  .sec-head h2{font-size:clamp(1.15rem,3vw,1.5rem);font-weight:700;letter-spacing:.02em;text-transform:uppercase}
-  .sec-head .rule{flex:1;height:1px;background:linear-gradient(90deg,var(--rule),transparent)}
-  .lede{max-width:var(--measure);color:var(--text-2);margin:-.4rem 0 1.9rem}
 
-  /* ---- figure ---- */
-  figure{margin:0;border:1px solid var(--rule);background:var(--panel);border-radius:2px;padding:1.5rem 1.25rem 1.1rem;overflow-x:auto}
-  figure svg{display:block;width:100%;min-width:44rem;max-width:100%;height:auto;color:var(--text-3)}
-  figcaption{margin-top:1rem;padding-top:.9rem;border-top:1px solid var(--rule-soft);font-size:.86rem;color:var(--text-3);max-width:var(--measure)}
-  figcaption b{color:var(--text-2);font-weight:500}
+  /* ---------- system map ---------- */
+  .mapfig svg{min-width:52rem}
+  .mapfig .q{cursor:pointer;transition:opacity .22s}
+  .mapfig:hover .q{opacity:.28}
+  .mapfig .q:hover{opacity:1}
+  .mapfig .q:focus-visible{outline:none}
 
-  /* ---- threat surface ---- */
-  .surface{border:1px solid var(--rule);border-radius:2px;overflow:hidden;background:var(--panel)}
-  .srow{display:grid;grid-template-columns:1fr;gap:.3rem 1.25rem;padding:.9rem 1.1rem;border-bottom:1px solid var(--rule-soft);align-items:baseline;transition:background .16s}
-  .srow:last-child{border-bottom:0}
-  .srow:hover{background:var(--panel-2)}
-  @media(min-width:44rem){.srow{grid-template-columns:13.5rem 1fr}}
-  .srow dt{font-family:var(--mono);font-size:.73rem;letter-spacing:.05em;color:var(--coral)}
-  .srow dd{margin:0;color:var(--text-2);font-size:.89rem}
+  /* ---------- die block sections ---------- */
+  section{position:relative;margin-top:clamp(2.25rem,5vw,3.5rem);padding:clamp(1.5rem,3vw,2.3rem);
+          background:rgba(6,9,20,.76);border:1px solid var(--trace);scroll-margin-top:1.5rem;
+          backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+  section > .blk{margin-top:0}
+  section::before,section::after{content:"";position:absolute;width:13px;height:13px;border:1px solid var(--sig);opacity:.5;pointer-events:none}
+  section::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+  section::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+  /* the bus line runs behind the blocks and shows in the gaps */
+  .wrap{position:relative}
+  .wrap::before{content:"";position:absolute;left:clamp(1.4rem,4vw,3rem);top:6rem;bottom:5rem;width:1px;z-index:-1;
+    background:repeating-linear-gradient(180deg,var(--sig-dim) 0 14px,transparent 14px 22px);opacity:.6}
+  .wrap::after{content:"";position:absolute;right:clamp(1.4rem,4vw,3rem);top:14rem;bottom:9rem;width:1px;z-index:-1;
+    background:repeating-linear-gradient(180deg,var(--pad-dim) 0 9px,transparent 9px 26px);opacity:.5}
+  .blk{display:flex;align-items:center;gap:.85rem;margin-bottom:1.7rem}
+  .blk-id{font-family:var(--mono);font-size:.61rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);background:var(--pad);padding:.24rem .55rem;font-weight:600;white-space:nowrap;flex:none}
+  .blk h2{font-size:clamp(1.2rem,3.2vw,1.7rem);font-weight:800;text-transform:uppercase}
+  .blk .route{flex:1;height:1px;background:linear-gradient(90deg,var(--sig-dim),var(--trace) 60%,transparent)}
+  .blk .pad{width:7px;height:7px;background:var(--sig);box-shadow:0 0 10px rgba(47,227,208,.6);flex:none}
+  .lede{max-width:var(--measure);color:var(--txt2);margin:-.3rem 0 1.8rem}
 
-  /* ---- experience ---- */
-  .job{border-left:1px solid var(--rule);padding:0 0 2.3rem clamp(1.1rem,3.5vw,2.5rem);position:relative;margin-left:.3rem}
-  .job:last-child{padding-bottom:0}
-  .job::before{content:"";position:absolute;left:-4px;top:.5rem;width:7px;height:7px;background:var(--amber);border-radius:50%;box-shadow:0 0 0 4px var(--ground)}
-  .job-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.3rem 1.5rem;align-items:baseline}
-  .job-head h3{font-size:1.13rem;font-weight:700;letter-spacing:-.01em}
-  .job .org{color:var(--text-2);font-size:.9rem;margin:.28rem 0 0}
-  .job .when{font-family:var(--mono);font-size:.71rem;letter-spacing:.06em;color:var(--text-3);white-space:nowrap}
+  /* ---------- chip-package surfaces ---------- */
+  .chip-cut{clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)}
 
-  .track{margin-top:1.5rem}
-  .track > h4{font-family:var(--mono);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin:0 0 .75rem;font-weight:500;display:flex;align-items:center;gap:.7rem}
-  .track > h4::after{content:"";flex:1;height:1px;background:var(--rule-soft)}
-  ul.pts{list-style:none;padding:0;margin:0;display:grid;gap:.85rem;max-width:var(--measure)}
-  ul.pts li{position:relative;padding-left:1.4rem;color:var(--text-2);font-size:.93rem}
-  ul.pts li::before{content:"▸";position:absolute;left:0;top:-.05em;color:var(--amber);font-size:.78rem}
-  ul.pts strong{color:var(--text);font-weight:500}
-
-  /* ---- projects ---- */
-  .grid{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:2px;overflow:hidden}
-  @media(min-width:47rem){.grid{grid-template-columns:1fr 1fr}}
-  .card{background:var(--panel);padding:1.55rem 1.45rem 1.7rem;display:flex;flex-direction:column;transition:background .18s;position:relative}
-  .card::after{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:transparent;transition:background .18s}
-  .card:hover{background:var(--panel-2)}
-  .card:hover::after{background:var(--amber)}
-  .card h3{font-size:1.03rem;font-weight:700}
-  .card .stack{font-family:var(--mono);font-size:.65rem;letter-spacing:.05em;color:var(--text-3);margin-top:.5rem;padding-bottom:.8rem;border-bottom:1px solid var(--rule-soft);overflow-wrap:anywhere}
-  .card p{margin:.85rem 0 0;color:var(--text-2);font-size:.89rem}
-  .card .note{margin-top:.65rem;font-size:.85rem;color:var(--text-3)}
-
-  /* ---- patents ---- */
-  .patents{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:2px;overflow:hidden;margin-bottom:2rem}
-  @media(min-width:47rem){.patents{grid-template-columns:1fr 1fr}}
-  .pat{background:var(--panel);padding:1.4rem 1.4rem 1.55rem;position:relative;transition:background .18s}
-  .pat:hover{background:var(--panel-2)}
-  .pat .jur{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--violet);border:1px solid rgba(139,123,255,.35);padding:.16rem .45rem;border-radius:2px}
-  .pat .num{font-family:var(--mono);font-size:1.05rem;color:var(--text);letter-spacing:.02em;margin:.85rem 0 0;font-variant-numeric:tabular-nums}
-  .pat .ttl{margin:.6rem 0 0;color:var(--text-2);font-size:.9rem;line-height:1.5}
-
-  ol.papers{list-style:none;counter-reset:p;padding:0;margin:0;display:grid;gap:1.1rem;max-width:var(--measure)}
-  ol.papers li{counter-increment:p;padding-left:2.5rem;position:relative;color:var(--text-2);font-size:.91rem}
-  ol.papers li::before{content:"[" counter(p) "]";position:absolute;left:0;top:0;font-family:var(--mono);font-size:.71rem;color:var(--amber-dim)}
-  ol.papers cite{font-style:normal;color:var(--text);font-weight:500}
-  .venue{display:block;font-family:var(--mono);font-size:.69rem;color:var(--text-3);margin-top:.28rem;letter-spacing:.03em}
-
-  /* ---- capabilities ---- */
-  .caps{display:grid;gap:0}
-  .cap{display:grid;grid-template-columns:1fr;gap:.35rem 1.7rem;padding:.95rem 0;border-bottom:1px solid var(--rule-soft)}
-  @media(min-width:44rem){.cap{grid-template-columns:11.5rem 1fr}}
-  .cap dt{font-family:var(--mono);font-size:.69rem;letter-spacing:.11em;text-transform:uppercase;color:var(--amber);padding-top:.15em}
-  .cap dd{margin:0;color:var(--text-2);font-size:.89rem}
-
-  /* ---- education ---- */
-  .edu{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:2px;overflow:hidden}
-  @media(min-width:44rem){.edu{grid-template-columns:1fr 1fr}}
-  .edu-item{background:var(--panel);padding:1.35rem 1.3rem 1.45rem}
-  .edu-item h3{font-size:.99rem;font-weight:700}
-  .edu-item p{margin:.42rem 0 0;color:var(--text-2);font-size:.86rem}
-  .edu-item .when{display:block;margin-top:.6rem;font-family:var(--mono);font-size:.69rem;color:var(--text-3);letter-spacing:.05em}
-  .certs{list-style:none;padding:0;margin:1.4rem 0 0;display:flex;flex-wrap:wrap;gap:.45rem}
-  .certs li{font-family:var(--mono);font-size:.67rem;letter-spacing:.04em;padding:.35rem .6rem;border:1px solid var(--rule);border-radius:2px;color:var(--text-3)}
-  .certs li.hl{color:var(--amber);border-color:var(--amber-dim)}
-
-  footer{margin-top:3.5rem;padding-top:1.5rem;border-top:1px solid var(--rule);font-family:var(--mono);font-size:.69rem;letter-spacing:.06em;color:var(--text-3);display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between}
-
-  /* ---- practice areas ---- */
-  .practice{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:2px;overflow:hidden}
+  .practice{display:grid;gap:1px;background:var(--trace);border:1px solid var(--trace)}
   @media(min-width:52rem){.practice{grid-template-columns:1fr 1fr}}
-  .disc{background:var(--panel);padding:1.5rem 1.45rem 1.6rem;position:relative;transition:background .18s}
-  .disc:hover{background:var(--panel-2)}
-  .disc::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--dc)}
-  .disc .tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dc)}
-  .disc h3{font-size:1.08rem;font-weight:700;margin-top:.55rem;letter-spacing:-.01em}
-  .disc p{margin:.75rem 0 0;color:var(--text-2);font-size:.9rem}
-  .disc .ev{margin-top:.9rem;padding-top:.8rem;border-top:1px solid var(--rule-soft);font-family:var(--mono);font-size:.68rem;line-height:1.7;color:var(--text-3);overflow-wrap:anywhere}
-  .disc[data-d="ml"]{--dc:var(--cyan)}
-  .disc[data-d="sec"]{--dc:var(--coral)}
-  .disc[data-d="ops"]{--dc:var(--amber)}
-  .disc[data-d="edge"]{--dc:var(--violet)}
-  .track[data-d="ml"] > h4{color:var(--cyan)}
-  .track[data-d="sec"] > h4{color:var(--coral)}
-  .track[data-d="ops"] > h4{color:var(--amber)}
-  .track[data-d="edge"] > h4{color:var(--violet)}
+  .disc{background:rgba(10,14,28,.82);padding:1.5rem 1.45rem 1.6rem;position:relative;transition:background .18s}
+  .disc:hover{background:var(--die2)}
+  .disc::before{content:"";position:absolute;left:1.45rem;top:0;width:22px;height:2px;background:var(--dc)}
+  .disc .tag{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dc)}
+  .disc h3{font-size:1.1rem;font-weight:800;margin-top:.5rem}
+  .disc p{margin:.7rem 0 0;color:var(--txt2);font-size:.9rem}
+  .disc .ev{margin-top:.9rem;padding-top:.8rem;border-top:1px solid var(--trace2);font-family:var(--mono);font-size:.66rem;line-height:1.8;color:var(--txt3);overflow-wrap:anywhere}
+  .disc[data-d="ml"]{--dc:var(--sig)} .disc[data-d="sec"]{--dc:var(--fault)}
+  .disc[data-d="ops"]{--dc:var(--pad)} .disc[data-d="edge"]{--dc:var(--via)}
+  .track[data-d="ml"] > h4{color:var(--sig)} .track[data-d="sec"] > h4{color:var(--fault)}
+  .track[data-d="ops"] > h4{color:var(--pad)} .track[data-d="edge"] > h4{color:var(--via)}
 
-  /* ---- state chips on the threat surface ---- */
-  .chips{display:flex;flex-wrap:wrap;gap:.3rem;align-items:center}
-  .chip{font-family:var(--mono);font-size:.58rem;letter-spacing:.11em;text-transform:uppercase;padding:.16rem .4rem;border-radius:2px;white-space:nowrap;border:1px solid;line-height:1.5}
-  .chip.ex{color:var(--coral);border-color:rgba(255,115,89,.4);background:rgba(255,115,89,.08)}
-  .chip.de{color:var(--cyan);border-color:rgba(79,216,232,.35);background:rgba(79,216,232,.07)}
-  .chip.df{color:var(--green);border-color:rgba(91,217,154,.35);background:rgba(91,217,154,.07)}
-  .legend{display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;margin:0 0 1rem;font-family:var(--mono);font-size:.65rem;letter-spacing:.06em;color:var(--text-3);align-items:center}
+  /* ---------- threat surface ---------- */
+  .legend{display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;margin:0 0 1rem;font-family:var(--mono);font-size:.63rem;letter-spacing:.08em;color:var(--txt3);align-items:center}
   .legend span{display:inline-flex;align-items:center;gap:.4rem}
-  .swatch{width:9px;height:9px;border-radius:2px;border:1px solid}
-  .swatch.ex{border-color:var(--coral);background:rgba(255,115,89,.25)}
-  .swatch.de{border-color:var(--cyan);background:rgba(79,216,232,.25)}
-  .swatch.df{border-color:var(--green);background:rgba(91,217,154,.25)}
+  .swatch{width:8px;height:8px;border:1px solid}
+  .swatch.ex{border-color:var(--fault);background:rgba(255,92,122,.28)}
+  .swatch.de{border-color:var(--sig);background:rgba(47,227,208,.28)}
+  .swatch.df{border-color:var(--ok);background:rgba(79,227,168,.28)}
+  .surface{border:1px solid var(--trace);background:rgba(10,14,28,.82)}
+  .srow{display:grid;grid-template-columns:1fr;gap:.3rem 1.25rem;padding:.9rem 1.1rem;border-bottom:1px solid var(--trace2);align-items:baseline;transition:background .16s}
+  .srow:last-child{border-bottom:0}
+  .srow:hover{background:var(--die2)}
+  @media(min-width:44rem){.srow{grid-template-columns:13.5rem 1fr}}
   @media(min-width:60rem){.srow{grid-template-columns:13.5rem 1fr 15rem}.srow .chips{justify-content:flex-end}}
+  .srow dt{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--fault)}
+  .srow dd{margin:0;color:var(--txt2);font-size:.88rem}
+  .chips{display:flex;flex-wrap:wrap;gap:.3rem;align-items:center}
+  .chip{font-family:var(--mono);font-size:.56rem;letter-spacing:.13em;text-transform:uppercase;padding:.16rem .42rem;white-space:nowrap;border:1px solid;line-height:1.5}
+  .chip.ex{color:var(--fault);border-color:rgba(255,92,122,.42);background:rgba(255,92,122,.09)}
+  .chip.de{color:var(--sig);border-color:rgba(47,227,208,.38);background:rgba(47,227,208,.08)}
+  .chip.df{color:var(--ok);border-color:rgba(79,227,168,.38);background:rgba(79,227,168,.08)}
 
-  /* ---- figure numbering ---- */
-  .fignum{font-family:var(--mono);font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin:1.9rem 0 1.1rem;display:flex;align-items:center;gap:.7rem}
-  .sec-head + .fignum{margin-top:0}
-  .fignum::after{content:"";flex:1;height:1px;background:var(--rule-soft)}
-  figure + figure{margin-top:1.5rem}
+  /* ---------- figures ---------- */
+  .fignum{font-family:var(--mono);font-size:.61rem;letter-spacing:.16em;text-transform:uppercase;color:var(--pad);margin:1.9rem 0 1rem;display:flex;align-items:center;gap:.7rem}
+  .fignum::after{content:"";flex:1;height:1px;background:var(--trace2)}
+  .blk + .fignum{margin-top:0}
+  figure{margin:0;border:1px solid var(--trace);background:rgba(10,14,28,.86);padding:1.5rem 1.25rem 1.1rem;overflow-x:auto}
+  figure svg{display:block;width:100%;min-width:44rem;max-width:100%;height:auto;color:var(--txt3)}
+  figcaption{margin-top:1rem;padding-top:.9rem;border-top:1px solid var(--trace2);font-size:.85rem;color:var(--txt3);max-width:var(--measure)}
+  figcaption b{color:var(--txt2);font-weight:600}
 
-  /* ---- case study panel ---- */
-  .case{border:1px solid var(--rule);background:var(--panel);border-radius:2px;margin-top:1.5rem;overflow:hidden}
-  .case-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem 1rem;padding:1.15rem 1.25rem;border-bottom:1px solid var(--rule-soft)}
-  .case-top h3{font-size:1.02rem;font-weight:700}
-  .case-top .dur{font-family:var(--mono);font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;color:var(--amber);border:1px solid var(--amber-dim);padding:.18rem .45rem;border-radius:2px}
-  .case-body{display:grid;gap:0}
-  .crow{display:grid;grid-template-columns:1fr;gap:.25rem 1.5rem;padding:.85rem 1.25rem;border-bottom:1px solid var(--rule-soft)}
+  /* ---------- case study ---------- */
+  .case{border:1px solid var(--trace);background:rgba(10,14,28,.86);margin-top:1.5rem}
+  .case-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem 1rem;padding:1.15rem 1.25rem;border-bottom:1px solid var(--trace2)}
+  .case-top h3{font-size:1.02rem;font-weight:800}
+  .case-top .dur{font-family:var(--mono);font-size:.63rem;letter-spacing:.13em;text-transform:uppercase;color:var(--sub);background:var(--pad);padding:.2rem .45rem;font-weight:600}
+  .case-body{display:grid}
+  .crow{display:grid;grid-template-columns:1fr;gap:.25rem 1.5rem;padding:.85rem 1.25rem;border-bottom:1px solid var(--trace2)}
   .crow:last-child{border-bottom:0}
   @media(min-width:44rem){.crow{grid-template-columns:8rem 1fr}}
-  .crow dt{font-family:var(--mono);font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);padding-top:.2em}
-  .crow dd{margin:0;color:var(--text-2);font-size:.9rem}
+  .crow dt{font-family:var(--mono);font-size:.61rem;letter-spacing:.14em;text-transform:uppercase;color:var(--txt3);padding-top:.2em}
+  .crow dd{margin:0;color:var(--txt2);font-size:.89rem}
 
-  /* ---- patent document motif ---- */
-  .pat{position:relative}
-  .pat::before,.pat::after{content:"";position:absolute;width:11px;height:11px;border:1px solid var(--amber-dim);pointer-events:none}
-  .pat::before{top:.75rem;right:.75rem;border-left:0;border-bottom:0}
-  .pat::after{bottom:.75rem;right:.75rem;border-left:0;border-top:0}
-  .pat .num{position:relative;padding-bottom:.7rem}
-  .pat .num::after{content:"";position:absolute;left:0;bottom:0;width:2.5rem;height:1px;background:var(--amber)}
+  /* ---------- experience ---------- */
+  .job{border-left:1px solid var(--trace);padding:0 0 2.3rem clamp(1.1rem,3.5vw,2.5rem);position:relative;margin-left:.3rem}
+  .job:last-child{padding-bottom:0}
+  .job::before{content:"";position:absolute;left:-5px;top:.55rem;width:9px;height:9px;background:var(--pad);box-shadow:0 0 0 4px var(--sub),0 0 14px rgba(255,194,75,.5)}
+  .job-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.3rem 1.5rem;align-items:baseline}
+  .job-head h3{font-size:1.15rem;font-weight:800}
+  .job .org{color:var(--txt2);font-size:.89rem;margin:.28rem 0 0}
+  .job .when{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:var(--txt3);white-space:nowrap}
+  .track{margin-top:1.5rem}
+  .track > h4{font-family:var(--mono);font-size:.63rem;letter-spacing:.17em;text-transform:uppercase;margin:0 0 .75rem;font-weight:600;display:flex;align-items:center;gap:.7rem}
+  .track > h4::after{content:"";flex:1;height:1px;background:var(--trace2)}
+  ul.pts{list-style:none;padding:0;margin:0;display:grid;gap:.85rem;max-width:var(--measure)}
+  ul.pts li{position:relative;padding-left:1.35rem;color:var(--txt2);font-size:.92rem}
+  ul.pts li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border:1px solid var(--sig)}
+  ul.pts strong{color:var(--txt);font-weight:600}
 
-  /* ---- card lift ---- */
-  .card,.pat,.edu-item{will-change:auto}
-  .card:hover h3{color:var(--amber)}
+  /* ---------- builds ---------- */
+  .grid{display:grid;gap:1px;background:var(--trace);border:1px solid var(--trace)}
+  @media(min-width:47rem){.grid{grid-template-columns:1fr 1fr}}
+  .card{background:rgba(10,14,28,.82);padding:1.55rem 1.45rem 1.7rem;display:flex;flex-direction:column;position:relative;transition:background .18s}
+  .card::before{content:"";position:absolute;left:0;top:0;width:0;height:0;border-top:14px solid var(--trace);border-right:14px solid transparent}
+  .card:hover{background:var(--die2)}
+  .card:hover::before{border-top-color:var(--sig)}
+  .card:hover h3{color:var(--sig)}
+  .card h3{font-size:1.04rem;font-weight:800;transition:color .18s}
+  .card .stack{font-family:var(--mono);font-size:.63rem;letter-spacing:.07em;color:var(--txt3);margin-top:.5rem;padding-bottom:.8rem;border-bottom:1px solid var(--trace2);overflow-wrap:anywhere}
+  .card p{margin:.85rem 0 0;color:var(--txt2);font-size:.88rem}
+  .card .note{margin-top:.65rem;font-size:.84rem;color:var(--txt3)}
+
+  /* ---------- patents / research ---------- */
+  .patents{display:grid;gap:1px;background:var(--trace);border:1px solid var(--trace);margin-bottom:2rem}
+  @media(min-width:47rem){.patents{grid-template-columns:1fr 1fr}}
+  .pat{background:rgba(10,14,28,.82);padding:1.4rem 1.4rem 1.55rem;position:relative;transition:background .18s}
+  .pat:hover{background:var(--die2)}
+  .pat::before,.pat::after{content:"";position:absolute;width:10px;height:10px;border:1px solid var(--pad-dim);pointer-events:none}
+  .pat::before{top:.7rem;right:.7rem;border-left:0;border-bottom:0}
+  .pat::after{bottom:.7rem;right:.7rem;border-left:0;border-top:0}
+  .pat .jur{display:inline-flex;font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--via);border:1px solid rgba(138,123,255,.4);padding:.15rem .42rem}
+  .pat .num{font-family:var(--mono);font-size:1.05rem;color:var(--txt);letter-spacing:.03em;margin:.8rem 0 0;font-variant-numeric:tabular-nums;position:relative;padding-bottom:.7rem}
+  .pat .num::after{content:"";position:absolute;left:0;bottom:0;width:2.4rem;height:1px;background:var(--pad)}
+  .pat .ttl{margin:.6rem 0 0;color:var(--txt2);font-size:.89rem;line-height:1.5}
+  ol.papers{list-style:none;counter-reset:p;padding:0;margin:0;display:grid;gap:1.1rem;max-width:var(--measure)}
+  ol.papers li{counter-increment:p;padding-left:2.4rem;position:relative;color:var(--txt2);font-size:.9rem}
+  ol.papers li::before{content:"[" counter(p) "]";position:absolute;left:0;top:0;font-family:var(--mono);font-size:.68rem;color:var(--pad-dim)}
+  ol.papers cite{font-style:normal;color:var(--txt);font-weight:600}
+  .venue{display:block;font-family:var(--mono);font-size:.66rem;color:var(--txt3);margin-top:.28rem;letter-spacing:.05em}
+
+  /* ---------- spec sheet ---------- */
+  .caps{display:grid}
+  .cap{display:grid;grid-template-columns:1fr;gap:.35rem 1.7rem;padding:.95rem 0;border-bottom:1px solid var(--trace2)}
+  @media(min-width:44rem){.cap{grid-template-columns:11.5rem 1fr}}
+  .cap dt{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sig);padding-top:.15em}
+  .cap dd{margin:0;color:var(--txt2);font-size:.88rem}
+
+  /* ---------- education ---------- */
+  .edu{display:grid;gap:1px;background:var(--trace);border:1px solid var(--trace)}
+  @media(min-width:44rem){.edu{grid-template-columns:1fr 1fr}}
+  .edu-item{background:rgba(10,14,28,.82);padding:1.35rem 1.3rem 1.45rem}
+  .edu-item h3{font-size:1rem;font-weight:800}
+  .edu-item p{margin:.42rem 0 0;color:var(--txt2);font-size:.85rem}
+  .edu-item .when{display:block;margin-top:.6rem;font-family:var(--mono);font-size:.66rem;color:var(--txt3);letter-spacing:.07em}
+  .certs{list-style:none;padding:0;margin:1.4rem 0 0;display:flex;flex-wrap:wrap;gap:.4rem}
+  .certs li{font-family:var(--mono);font-size:.64rem;letter-spacing:.05em;padding:.35rem .58rem;border:1px solid var(--trace);color:var(--txt3)}
+  .certs li.hl{color:var(--pad);border-color:var(--pad-dim)}
+
+  footer{margin-top:3.5rem;padding-top:1.5rem;border-top:1px solid var(--trace);font-family:var(--mono);font-size:.66rem;
+         letter-spacing:.1em;color:var(--txt3);display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between}
 
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-
-  /* ---- print ---- */
   @media print{
-    :root{--ground:#fff;--panel:#fff;--panel-2:#fff;--rule:#bbb;--rule-soft:#ddd;--text:#111;--text-2:#333;--text-3:#666;--amber:#8a5c00;--amber-dim:#c8a45e}
-    body{background:#fff;color:#111}
-    #field,#rail,#prog{display:none!important}
-    .hero{padding-top:0}
-    section{break-inside:avoid}
-    .card,.pat,figure,.case{break-inside:avoid}
-    a{color:#111}
+    body{background:#fff;color:#111;padding:0}
+    #die,#rail,#prog{display:none!important}
+    .blk h2,h1,h3{color:#111}
+    section,.card,.pat,figure,.case{break-inside:avoid}
   }
 </style>
 </head>
 <body>
+<canvas id="die" aria-hidden="true"></canvas>
+<div id="vig"></div>
 <div id="prog"></div>
 
 <nav id="rail" aria-label="Sections">
+  <a href="#map"><i></i><span>Map</span></a>
   <a href="#practice"><i></i><span>Practice</span></a>
-  <a href="#surface"><i></i><span>Threat surface</span></a>
+  <a href="#surface"><i></i><span>Attack</span></a>
   <a href="#chain"><i></i><span>Method</span></a>
-  <a href="#experience"><i></i><span>Experience</span></a>
-  <a href="#builds"><i></i><span>Builds</span></a>
-  <a href="#research"><i></i><span>Research</span></a>
-  <a href="#capabilities"><i></i><span>Capabilities</span></a>
-  <a href="#education"><i></i><span>Education</span></a>
+  <a href="#experience"><i></i><span>Log</span></a>
+  <a href="#embedded"><i></i><span>Embedded</span></a>
+  <a href="#builds"><i></i><span>Build</span></a>
+  <a href="#research"><i></i><span>IP</span></a>
+  <a href="#capabilities"><i></i><span>Spec</span></a>
+  <a href="#education"><i></i><span>Origin</span></a>
 </nav>
 
 <div class="wrap">
 
   <header class="hero">
-    <canvas id="field" height="520" aria-hidden="true"></canvas>
-    <span class="status"><span class="dot"></span> Open to AI security roles · Bengaluru</span>
+    <span class="status"><span class="dot"></span> Bengaluru, India · Building and securing AI systems since 2022</span>
     <h1>Parin<br><em>Shah</em></h1>
     <p class="role-line">
-      <span>AI/ML Engineering</span><span>AI Security</span><span>Cloud Security &amp; DevOps</span><span>Embedded AI</span>
+      <span>AI/ML Engineering</span><span>AI Security</span><span>Cloud &amp; DevOps</span><span>Embedded AI</span>
     </p>
     <p class="thesis">
       I build machine learning systems, break them on purpose, and then ship the infrastructure that
       keeps them standing in production. <strong>Four years at Bosch's AIShield</strong> spanning four
-      disciplines that most people split across four people: model engineering, adversarial security,
-      cloud and DevOps, and inference on hardware small enough to hold. Plus, on my own time, the
-      full-stack AI products that keep me honest about what this costs to actually run.
+      disciplines that most teams split across four people — model engineering, adversarial security,
+      cloud and DevOps, and inference on hardware small enough to hold.
     </p>
     <div class="contact">
       <a href="mailto:parinjshah0526@gmail.com">parinjshah0526@gmail.com</a>
@@ -283,8 +291,144 @@
     <div class="cell"><b>6</b><span>Systems shipped solo</span></div>
   </div>
 
+  <section id="map">
+    <div class="blk">
+      <span class="blk-id">16 blocks</span>
+      <h2>System map</h2>
+      <span class="route"></span>
+      <span class="pad"></span>
+    </div>
+    <p class="lede">Everything I work on, on one die. Four domains, sixteen blocks, one bus — hover a domain to isolate it, click to jump to the detail.</p>
+
+    <figure class="mapfig">
+      <svg viewBox="0 0 1000 640" role="img" aria-label="A floorplan of Parin Shah's work across four domains: AI/ML engineering (computer vision models, NLP pipelines, LLM fine-tuning, segmentation); AI security (red teaming, model extraction, runtime guardrails, MITRE ATLAS mapping); cloud security and DevOps (IAM and key management, Terraform, CI/CD, supply-chain scanning); and embedded and edge AI (ONNX runtime, TFLite quantization, FPGA, microcontrollers). A central system bus connects all four.">
+        <!-- pad ring -->
+        <g fill="#6B5220">
+          <rect x="0" y="26" width="16" height="3"/><rect x="0" y="120" width="16" height="3"/>
+          <rect x="0" y="330" width="16" height="3"/><rect x="0" y="500" width="16" height="3"/>
+          <rect x="984" y="26" width="16" height="3"/><rect x="984" y="180" width="16" height="3"/>
+          <rect x="984" y="330" width="16" height="3"/><rect x="984" y="540" width="16" height="3"/>
+        </g>
+        <text x="0" y="16" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#5F7396" letter-spacing="1.6">IN ▸ DATASETS · PROMPTS · MODEL ARTIFACTS · TELEMETRY</text>
+        <text x="1000" y="16" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#5F7396" letter-spacing="1.6">4 YRS · 2 PATENTS · 4 PAPERS</text>
+
+        <!-- system bus -->
+        <line x1="500" y1="76" x2="500" y2="594" stroke="#FFC24B" stroke-width="1.5" stroke-dasharray="6 5" opacity=".75"/>
+        <line x1="40" y1="335" x2="960" y2="335" stroke="#FFC24B" stroke-width="1.5" stroke-dasharray="6 5" opacity=".75"/>
+        <rect x="466" y="318" width="68" height="34" fill="#04060E" stroke="#FFC24B" stroke-width="1"/>
+        <text x="500" y="339" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#FFC24B" letter-spacing="1">BUS</text>
+
+        <!-- quadrants -->
+        <g class="q" data-q="ml" data-col="#2FE3D0">
+        <rect x="40" y="76" width="420" height="222" fill="rgba(10,14,28,.72)" stroke="#2FE3D0" stroke-width="1"/>
+        <path d="M 40 76 h 14 M 40 76 v 14" stroke="#2FE3D0" stroke-width="2" fill="none"/>
+        <path d="M 460 298 h -14 M 460 298 v -14" stroke="#2FE3D0" stroke-width="2" fill="none"/>
+        <text x="56" y="104" font-family="Sora, sans-serif" font-size="15" font-weight="800" fill="#2FE3D0" letter-spacing="0.5">AI/ML ENGINEERING</text>
+        <text x="56" y="120" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5F7396" letter-spacing="1">MODELS, END TO END</text>
+        <rect x="56" y="134" width="186" height="66" fill="rgba(4,6,14,.6)" stroke="#18213C" stroke-width="1"/>
+        <rect x="56" y="134" width="26" height="2" fill="#2FE3D0"/>
+        <text x="67" y="160" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" fill="#E9EEFB" letter-spacing="0.6">CV MODELS</text>
+        <text x="67" y="178" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#9DB0CE">classification · detection</text>
+        <rect x="258" y="134" width="186" height="66" fill="rgba(4,6,14,.6)" stroke="#18213C" stroke-width="1"/>
+        <rect x="258" y="134" width="26" height="2" fill="#2FE3D0"/>
+        <text x="269" y="160" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" fill="#E9EEFB" letter-spacing="0.6">NLP PIPELINE</text>
+        <text x="269" y="178" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#9DB0CE">NER · embeddings · search</text>
+        <rect x="56" y="214" width="186" height="66" fill="rgba(4,6,14,.6)" stroke="#18213C" stroke-width="1"/>
+        <rect x="56" y="214" width="26" height="2" fill="#2FE3D0"/>
+        <text x="67" y="240" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" fill="#E9EEFB" letter-spacing="0.6">LLM FINE-TUNE</text>
+        <text x="67" y="258" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#9DB0CE">Llama 3.2 · ModernBERT</text>
+        <rect x="258" y="214" width="186" height="66" fill="rgba(4,6,14,.6)" stroke="#18213C" stroke-width="1"/>
+        <rect x="258" y="214" width="26" height="2" fill="#2FE3D0"/>
+        <text x="269" y="240" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" fill="#E9EEFB" letter-spacing="0.6">SEGMENTATION</text>
+        <text x="269" y="258" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#9DB0CE">multi-dataset pipelines</text>
+        </g>
+        <g class="q" data-q="sec" data-col="#FF5C7A">
+        <rect x="540" y="76" width="420" height="222" fill="rgba(10,14,28,.72)" stroke="#FF5C7A" stroke-width="1"/>
+        <path d="M 540 76 h 14 M 540 76 v 14" stroke="#FF5C7A" stroke-width="2" fill="none"/>
+        <path d="M 960 298 h -14 M 960 298 v -14" stroke="#FF5C7A" stroke-width="2" fill="none"/>
+        <text x="556" y="104" font-family="Sora, sans-serif" font-size="15" font-weight="800" fill="#FF5C7A" letter-spacing="0.5">AI SECURITY</text>
+        <text x="556" y="120" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5F7396" letter-spacing="1">BREAK IT, THEN HOLD IT</text>
+        <rect x="556" y="134" width="186" height="66" fill="rgba(4,6,14,.6)" stroke="#18213C" stroke-width="1"/>
+        <rect x="556" y="134" width="26" height="2" fill="#FF5C7A"/>
+        <text x="567" y="160" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" fill="#E9EEFB" letter-spacing="0.6">RED TEAM</text>
+        <text x="567" y="178" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#9DB0CE">prompt injection · jailbreak</text>
+        <rect x="758" y="134" width="186" height="66" fill="rgba(4,6,14,.6)" stroke="#18213C" stroke-width="1"/>
+        <rect x="758" y="134" width="26" height="2" fill="#FF5C7A"/>
+        <text x="769" y="160" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" fill="#E9EEFB" letter-spacing="0.6">EXTRACTION</text>
+        <text x="769" y="178" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#9DB0CE">evasion · poisoning</text>
+        <rect x="556" y="214" width="186" height="66" fill="rgba(4,6,14,.6)" stroke="#18213C" stroke-width="1"/>
+        <rect x="556" y="214" width="26" height="2" fill="#FF5C7A"/>
+        <text x="567" y="240" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" fill="#E9EEFB" letter-spacing="0.6">GUARDRAIL RT</text>
+        <text x="567" y="258" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#9DB0CE">live policy enforcement</text>
+        <rect x="758" y="214" width="186" height="66" fill="rgba(4,6,14,.6)" stroke="#18213C" stroke-width="1"/>
+        <rect x="758" y="214" width="26" height="2" fill="#FF5C7A"/>
+        <text x="769" y="240" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" fill="#E9EEFB" letter-spacing="0.6">ATLAS MAP</text>
+        <text x="769" y="258" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#9DB0CE">OWASP · NIST AI RMF</text>
+        </g>
+        <g class="q" data-q="ops" data-col="#FFC24B">
+        <rect x="40" y="372" width="420" height="222" fill="rgba(10,14,28,.72)" stroke="#FFC24B" stroke-width="1"/>
+        <path d="M 40 372 h 14 M 40 372 v 14" stroke="#FFC24B" stroke-width="2" fill="none"/>
+        <path d="M 460 594 h -14 M 460 594 v -14" stroke="#FFC24B" stroke-width="2" fill="none"/>
+        <text x="56" y="400" font-family="Sora, sans-serif" font-size="15" font-weight="800" fill="#FFC24B" letter-spacing="0.5">CLOUD SECURITY & DEVOPS</text>
+        <text x="56" y="416" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5F7396" letter-spacing="1">THE GROUND IT RUNS ON</text>
+        <rect x="56" y="430" width="186" height="66" fill="rgba(4,6,14,.6)" stroke="#18213C" stroke-width="1"/>
+        <rect x="56" y="430" width="26" height="2" fill="#FFC24B"/>
+        <text x="67" y="456" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" fill="#E9EEFB" letter-spacing="0.6">IAM + KMS</text>
+        <text x="67" y="474" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#9DB0CE">least privilege · rotation</text>
+        <rect x="258" y="430" width="186" height="66" fill="rgba(4,6,14,.6)" stroke="#18213C" stroke-width="1"/>
+        <rect x="258" y="430" width="26" height="2" fill="#FFC24B"/>
+        <text x="269" y="456" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" fill="#E9EEFB" letter-spacing="0.6">TERRAFORM</text>
+        <text x="269" y="474" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#9DB0CE">GPU Kubernetes</text>
+        <rect x="56" y="510" width="186" height="66" fill="rgba(4,6,14,.6)" stroke="#18213C" stroke-width="1"/>
+        <rect x="56" y="510" width="26" height="2" fill="#FFC24B"/>
+        <text x="67" y="536" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" fill="#E9EEFB" letter-spacing="0.6">CI/CD</text>
+        <text x="67" y="554" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#9DB0CE">CodePipeline · Git</text>
+        <rect x="258" y="510" width="186" height="66" fill="rgba(4,6,14,.6)" stroke="#18213C" stroke-width="1"/>
+        <rect x="258" y="510" width="26" height="2" fill="#FFC24B"/>
+        <text x="269" y="536" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" fill="#E9EEFB" letter-spacing="0.6">SUPPLY CHAIN</text>
+        <text x="269" y="554" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#9DB0CE">PROSEC · OSS · image scan</text>
+        </g>
+        <g class="q" data-q="edge" data-col="#8A7BFF">
+        <rect x="540" y="372" width="420" height="222" fill="rgba(10,14,28,.72)" stroke="#8A7BFF" stroke-width="1"/>
+        <path d="M 540 372 h 14 M 540 372 v 14" stroke="#8A7BFF" stroke-width="2" fill="none"/>
+        <path d="M 960 594 h -14 M 960 594 v -14" stroke="#8A7BFF" stroke-width="2" fill="none"/>
+        <text x="556" y="400" font-family="Sora, sans-serif" font-size="15" font-weight="800" fill="#8A7BFF" letter-spacing="0.5">EMBEDDED & EDGE AI</text>
+        <text x="556" y="416" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5F7396" letter-spacing="1">WHERE COMPUTE IS SCARCE</text>
+        <rect x="556" y="430" width="186" height="66" fill="rgba(4,6,14,.6)" stroke="#18213C" stroke-width="1"/>
+        <rect x="556" y="430" width="26" height="2" fill="#8A7BFF"/>
+        <text x="567" y="456" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" fill="#E9EEFB" letter-spacing="0.6">ONNX RUNTIME</text>
+        <text x="567" y="474" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#9DB0CE">production GPU inference</text>
+        <rect x="758" y="430" width="186" height="66" fill="rgba(4,6,14,.6)" stroke="#18213C" stroke-width="1"/>
+        <rect x="758" y="430" width="26" height="2" fill="#8A7BFF"/>
+        <text x="769" y="456" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" fill="#E9EEFB" letter-spacing="0.6">TFLITE</text>
+        <text x="769" y="474" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#9DB0CE">INT8 · FP16 quantization</text>
+        <rect x="556" y="510" width="186" height="66" fill="rgba(4,6,14,.6)" stroke="#18213C" stroke-width="1"/>
+        <rect x="556" y="510" width="26" height="2" fill="#8A7BFF"/>
+        <text x="567" y="536" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" fill="#E9EEFB" letter-spacing="0.6">FPGA</text>
+        <text x="567" y="554" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#9DB0CE">Kria KV260 · roofline</text>
+        <rect x="758" y="510" width="186" height="66" fill="rgba(4,6,14,.6)" stroke="#18213C" stroke-width="1"/>
+        <rect x="758" y="510" width="26" height="2" fill="#8A7BFF"/>
+        <text x="769" y="536" font-family="IBM Plex Mono, monospace" font-size="10.5" font-weight="600" fill="#E9EEFB" letter-spacing="0.6">MCU / SBC</text>
+        <text x="769" y="554" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#9DB0CE">ESP32 · Jetson · Raspberry Pi</text>
+        </g>
+
+        <text x="0" y="624" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#5F7396" letter-spacing="1.6">OUT ▸ HARDENED MODELS · RUNTIME POLICY · MEASURED ROBUSTNESS BASELINES</text>
+      </svg>
+      <figcaption>
+        <b>Four domains most teams split across four people.</b> The bus is the point: a model trained in the
+        top-left has to survive the top-right, ship through the bottom-left, and run on the bottom-right.
+        I have owned every block on this die.
+      </figcaption>
+    </figure>
+  </section>
+
   <section id="practice">
-    <div class="sec-head"><span class="idx">01</span><h2>What I do</h2><div class="rule"></div></div>
+    <div class="blk">
+      <span class="blk-id">4 domains</span>
+      <h2>What I do</h2>
+      <span class="route"></span>
+      <span class="pad"></span>
+    </div>
     <p class="lede">Four disciplines that usually sit with four different people. They overlap in one place — getting a model from a notebook onto hardware someone depends on, without it being the weakest thing in the building.</p>
 
     <div class="practice">
@@ -319,7 +463,12 @@
   </section>
 
   <section id="surface">
-    <div class="sec-head"><span class="idx">02</span><h2>Threat surface</h2><div class="rule"></div></div>
+    <div class="blk">
+      <span class="blk-id">11 attack classes</span>
+      <h2>Threat surface</h2>
+      <span class="route"></span>
+      <span class="pad"></span>
+    </div>
     <p class="lede">Attack classes I have personally executed, detected, or built defences against — against real models in production, not benchmarks.</p>
     <p class="legend"><span><i class="swatch ex"></i>EXECUTED — I ran the attack</span><span><i class="swatch de"></i>DETECTED — I built the detection</span><span><i class="swatch df"></i>DEFENDED — I built the control</span></p>
     <dl class="surface">
@@ -338,7 +487,12 @@
   </section>
 
   <section id="chain">
-    <div class="sec-head"><span class="idx">03</span><h2>Method &amp; evidence</h2><div class="rule"></div></div>
+    <div class="blk">
+      <span class="blk-id">3 figures</span>
+      <h2>Method &amp; evidence</h2>
+      <span class="route"></span>
+      <span class="pad"></span>
+    </div>
     <p class="lede">Most AI security work stops at a findings report. The reason I get hired for both halves is that the offensive pass is wired into the control that ships afterwards.</p>
 
     <p class="fignum">Fig. 01 — Engagement lifecycle</p>
@@ -349,76 +503,76 @@
             <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
           </marker>
           <marker id="ah-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-            <path d="M 0 0 L 10 5 L 0 10 z" fill="#F2A93B"/>
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#FFC24B"/>
           </marker>
         </defs>
 
         <!-- phase captions -->
         <text x="0" y="18" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1.6" fill="currentColor">OFFENSIVE — WHAT I EXECUTE</text>
         <line x1="0" y1="30" x2="828" y2="30" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4"/>
-        <text x="1000" y="18" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1.6" fill="#F2A93B">DEFENSIVE — WHAT I BUILD</text>
-        <line x1="860" y1="30" x2="1000" y2="30" stroke="#F2A93B" stroke-width="1"/>
+        <text x="1000" y="18" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1.6" fill="#FFC24B">DEFENSIVE — WHAT I BUILD</text>
+        <line x1="860" y1="30" x2="1000" y2="30" stroke="#FFC24B" stroke-width="1"/>
 
         <!-- stage 01 -->
         <rect x="0" y="52" width="140" height="92" fill="none" stroke="currentColor" stroke-width="1"/>
-        <text x="12" y="74" font-family="IBM Plex Mono, monospace" font-size="11" fill="#F2A93B">01</text>
-        <text x="12" y="95" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#E8EEF7">Recon</text>
+        <text x="12" y="74" font-family="IBM Plex Mono, monospace" font-size="11" fill="#FFC24B">01</text>
+        <text x="12" y="95" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#E9EEFB">Recon</text>
         <text x="12" y="118" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor">model &amp; artifact</text>
         <text x="12" y="131" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor">discovery</text>
 
         <!-- stage 02 -->
         <rect x="172" y="52" width="140" height="92" fill="none" stroke="currentColor" stroke-width="1"/>
-        <text x="184" y="74" font-family="IBM Plex Mono, monospace" font-size="11" fill="#F2A93B">02</text>
-        <text x="184" y="95" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#E8EEF7">Model access</text>
+        <text x="184" y="74" font-family="IBM Plex Mono, monospace" font-size="11" fill="#FFC24B">02</text>
+        <text x="184" y="95" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#E9EEFB">Model access</text>
         <text x="184" y="118" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor">decision-boundary</text>
         <text x="184" y="131" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor">probing</text>
 
         <!-- stage 03 -->
         <rect x="344" y="52" width="140" height="92" fill="none" stroke="currentColor" stroke-width="1"/>
-        <text x="356" y="74" font-family="IBM Plex Mono, monospace" font-size="11" fill="#F2A93B">03</text>
-        <text x="356" y="95" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#E8EEF7">Robustness eval</text>
+        <text x="356" y="74" font-family="IBM Plex Mono, monospace" font-size="11" fill="#FFC24B">03</text>
+        <text x="356" y="95" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#E9EEFB">Robustness eval</text>
         <text x="356" y="118" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor">extraction · evasion</text>
         <text x="356" y="131" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor">poisoning</text>
 
         <!-- stage 04 -->
         <rect x="516" y="52" width="140" height="92" fill="none" stroke="currentColor" stroke-width="1"/>
-        <text x="528" y="74" font-family="IBM Plex Mono, monospace" font-size="11" fill="#F2A93B">04</text>
-        <text x="528" y="95" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#E8EEF7">Craft adv. data</text>
+        <text x="528" y="74" font-family="IBM Plex Mono, monospace" font-size="11" fill="#FFC24B">04</text>
+        <text x="528" y="95" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#E9EEFB">Craft adv. data</text>
         <text x="528" y="118" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor">perturbation &amp;</text>
         <text x="528" y="131" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor">jailbreak generation</text>
 
         <!-- stage 05 -->
         <rect x="688" y="52" width="140" height="92" fill="none" stroke="currentColor" stroke-width="1"/>
-        <text x="700" y="74" font-family="IBM Plex Mono, monospace" font-size="11" fill="#F2A93B">05</text>
-        <text x="700" y="95" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#E8EEF7">Exfil &amp; impact</text>
+        <text x="700" y="74" font-family="IBM Plex Mono, monospace" font-size="11" fill="#FFC24B">05</text>
+        <text x="700" y="95" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#E9EEFB">Exfil &amp; impact</text>
         <text x="700" y="118" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor">membership inference</text>
         <text x="700" y="131" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor">model inversion · PII</text>
 
         <!-- stage 06 (defensive) -->
-        <rect x="860" y="52" width="140" height="92" fill="rgba(242,169,59,0.07)" stroke="#F2A93B" stroke-width="1"/>
-        <text x="872" y="74" font-family="IBM Plex Mono, monospace" font-size="11" fill="#F2A93B">06</text>
-        <text x="872" y="95" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#E8EEF7">Runtime guard</text>
-        <text x="872" y="118" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#A6B5CC">monitoring · policy</text>
-        <text x="872" y="131" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#A6B5CC">enforcement</text>
+        <rect x="860" y="52" width="140" height="92" fill="rgba(255,194,75,0.07)" stroke="#FFC24B" stroke-width="1"/>
+        <text x="872" y="74" font-family="IBM Plex Mono, monospace" font-size="11" fill="#FFC24B">06</text>
+        <text x="872" y="95" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#E9EEFB">Runtime guard</text>
+        <text x="872" y="118" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#9DB0CE">monitoring · policy</text>
+        <text x="872" y="131" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#9DB0CE">enforcement</text>
 
         <!-- chain arrows -->
         <line x1="140" y1="98" x2="166" y2="98" stroke="currentColor" stroke-width="1" marker-end="url(#ah)"/>
         <line x1="312" y1="98" x2="338" y2="98" stroke="currentColor" stroke-width="1" marker-end="url(#ah)"/>
         <line x1="484" y1="98" x2="510" y2="98" stroke="currentColor" stroke-width="1" marker-end="url(#ah)"/>
         <line x1="656" y1="98" x2="682" y2="98" stroke="currentColor" stroke-width="1" marker-end="url(#ah)"/>
-        <line x1="828" y1="98" x2="854" y2="98" stroke="#F2A93B" stroke-width="1" marker-end="url(#ah-a)"/>
+        <line x1="828" y1="98" x2="854" y2="98" stroke="#FFC24B" stroke-width="1" marker-end="url(#ah-a)"/>
 
         <!-- feedback loop -->
-        <path d="M 930 144 L 930 214 L 414 214 L 414 156" fill="none" stroke="#F2A93B" stroke-width="1" stroke-dasharray="4 4" marker-end="url(#ah-a)"/>
-        <rect x="510" y="204" width="324" height="20" fill="#0E1524"/>
-        <text x="672" y="219" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#F2A93B">findings become guardrail rules, then get retested</text>
+        <path d="M 930 144 L 930 214 L 414 214 L 414 156" fill="none" stroke="#FFC24B" stroke-width="1" stroke-dasharray="4 4" marker-end="url(#ah-a)"/>
+        <rect x="510" y="204" width="324" height="20" fill="#0A0E1C"/>
+        <text x="672" y="219" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#FFC24B">findings become guardrail rules, then get retested</text>
 
         <!-- governance band -->
         <line x1="0" y1="256" x2="1000" y2="256" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4"/>
         <text x="0" y="278" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1.2" fill="currentColor">EVERY STAGE MAPPED TO:</text>
-        <text x="182" y="278" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1.2" fill="#4FD8E8">MITRE ATLAS</text>
-        <text x="290" y="278" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1.2" fill="#4FD8E8">OWASP LLM TOP 10</text>
-        <text x="450" y="278" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1.2" fill="#4FD8E8">NIST AI RMF</text>
+        <text x="182" y="278" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1.2" fill="#2FE3D0">MITRE ATLAS</text>
+        <text x="290" y="278" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1.2" fill="#2FE3D0">OWASP LLM TOP 10</text>
+        <text x="450" y="278" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1.2" fill="#2FE3D0">NIST AI RMF</text>
         <text x="0" y="303" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1.2" fill="currentColor">DELIVERED AS: THREAT MODELS · SEVERITY-SCORED FINDINGS · REMEDIATION PLANS · RETEST EVIDENCE</text>
       </svg>
       <figcaption>
@@ -437,64 +591,64 @@
             <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
           </marker>
           <marker id="ah2a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-            <path d="M 0 0 L 10 5 L 0 10 z" fill="#F2A93B"/>
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#FFC24B"/>
           </marker>
         </defs>
 
         <!-- source model -->
-        <rect x="0" y="14" width="212" height="62" fill="rgba(242,169,59,0.07)" stroke="#F2A93B" stroke-width="1"/>
-        <text x="14" y="38" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#E8EEF7">One CNN classifier</text>
-        <text x="14" y="58" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#A6B5CC">one model · one attack harness</text>
+        <rect x="0" y="14" width="212" height="62" fill="rgba(255,194,75,0.07)" stroke="#FFC24B" stroke-width="1"/>
+        <text x="14" y="38" font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="#E9EEFB">One CNN classifier</text>
+        <text x="14" y="58" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#9DB0CE">one model · one attack harness</text>
 
         <!-- distribution bus -->
-        <path d="M 106 76 L 106 116 L 929 116" fill="none" stroke="#F2A93B" stroke-width="1"/>
-        <line x1="281" y1="116" x2="281" y2="144" stroke="#F2A93B" stroke-width="1" marker-end="url(#ah2a)"/>
-        <line x1="443" y1="116" x2="443" y2="144" stroke="#F2A93B" stroke-width="1" marker-end="url(#ah2a)"/>
-        <line x1="605" y1="116" x2="605" y2="144" stroke="#F2A93B" stroke-width="1" marker-end="url(#ah2a)"/>
-        <line x1="767" y1="116" x2="767" y2="144" stroke="#F2A93B" stroke-width="1" marker-end="url(#ah2a)"/>
-        <line x1="929" y1="116" x2="929" y2="144" stroke="#F2A93B" stroke-width="1" marker-end="url(#ah2a)"/>
-        <text x="120" y="112" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#F2A93B">deployed to →</text>
+        <path d="M 106 76 L 106 116 L 929 116" fill="none" stroke="#FFC24B" stroke-width="1"/>
+        <line x1="281" y1="116" x2="281" y2="144" stroke="#FFC24B" stroke-width="1" marker-end="url(#ah2a)"/>
+        <line x1="443" y1="116" x2="443" y2="144" stroke="#FFC24B" stroke-width="1" marker-end="url(#ah2a)"/>
+        <line x1="605" y1="116" x2="605" y2="144" stroke="#FFC24B" stroke-width="1" marker-end="url(#ah2a)"/>
+        <line x1="767" y1="116" x2="767" y2="144" stroke="#FFC24B" stroke-width="1" marker-end="url(#ah2a)"/>
+        <line x1="929" y1="116" x2="929" y2="144" stroke="#FFC24B" stroke-width="1" marker-end="url(#ah2a)"/>
+        <text x="120" y="112" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#FFC24B">deployed to →</text>
 
         <!-- targets -->
         <rect x="210" y="148" width="142" height="98" fill="none" stroke="currentColor" stroke-width="1"/>
-        <text x="222" y="172" font-family="Archivo, sans-serif" font-size="12.5" font-weight="600" fill="#E8EEF7">Cloud GPU</text>
+        <text x="222" y="172" font-family="Archivo, sans-serif" font-size="12.5" font-weight="600" fill="#E9EEFB">Cloud GPU</text>
         <text x="222" y="189" font-family="IBM Plex Mono, monospace" font-size="9" fill="currentColor">datacentre</text>
         <line x1="222" y1="200" x2="340" y2="200" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3"/>
-        <text x="222" y="218" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5BD99A">extraction ✓</text>
-        <text x="222" y="234" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5BD99A">profiled ✓</text>
+        <text x="222" y="218" font-family="IBM Plex Mono, monospace" font-size="9" fill="#4FE3A8">extraction ✓</text>
+        <text x="222" y="234" font-family="IBM Plex Mono, monospace" font-size="9" fill="#4FE3A8">profiled ✓</text>
 
         <rect x="372" y="148" width="142" height="98" fill="none" stroke="currentColor" stroke-width="1"/>
-        <text x="384" y="172" font-family="Archivo, sans-serif" font-size="12.5" font-weight="600" fill="#E8EEF7">Jetson Nano</text>
+        <text x="384" y="172" font-family="Archivo, sans-serif" font-size="12.5" font-weight="600" fill="#E9EEFB">Jetson Nano</text>
         <text x="384" y="189" font-family="IBM Plex Mono, monospace" font-size="9" fill="currentColor">edge GPU</text>
         <line x1="384" y1="200" x2="502" y2="200" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3"/>
-        <text x="384" y="218" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5BD99A">extraction ✓</text>
-        <text x="384" y="234" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5BD99A">evasion ✓</text>
+        <text x="384" y="218" font-family="IBM Plex Mono, monospace" font-size="9" fill="#4FE3A8">extraction ✓</text>
+        <text x="384" y="234" font-family="IBM Plex Mono, monospace" font-size="9" fill="#4FE3A8">evasion ✓</text>
 
         <rect x="534" y="148" width="142" height="98" fill="none" stroke="currentColor" stroke-width="1"/>
-        <text x="546" y="172" font-family="Archivo, sans-serif" font-size="12.5" font-weight="600" fill="#E8EEF7">Kria KV260</text>
+        <text x="546" y="172" font-family="Archivo, sans-serif" font-size="12.5" font-weight="600" fill="#E9EEFB">Kria KV260</text>
         <text x="546" y="189" font-family="IBM Plex Mono, monospace" font-size="9" fill="currentColor">FPGA</text>
         <line x1="546" y1="200" x2="664" y2="200" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3"/>
-        <text x="546" y="218" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5BD99A">extraction ✓</text>
-        <text x="546" y="234" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5BD99A">evasion ✓</text>
+        <text x="546" y="218" font-family="IBM Plex Mono, monospace" font-size="9" fill="#4FE3A8">extraction ✓</text>
+        <text x="546" y="234" font-family="IBM Plex Mono, monospace" font-size="9" fill="#4FE3A8">evasion ✓</text>
 
         <rect x="696" y="148" width="142" height="98" fill="none" stroke="currentColor" stroke-width="1"/>
-        <text x="708" y="172" font-family="Archivo, sans-serif" font-size="12.5" font-weight="600" fill="#E8EEF7">Raspberry Pi</text>
+        <text x="708" y="172" font-family="Archivo, sans-serif" font-size="12.5" font-weight="600" fill="#E9EEFB">Raspberry Pi</text>
         <text x="708" y="189" font-family="IBM Plex Mono, monospace" font-size="9" fill="currentColor">edge CPU</text>
         <line x1="708" y1="200" x2="826" y2="200" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3"/>
-        <text x="708" y="218" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5BD99A">extraction ✓</text>
-        <text x="708" y="234" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5BD99A">evasion ✓</text>
+        <text x="708" y="218" font-family="IBM Plex Mono, monospace" font-size="9" fill="#4FE3A8">extraction ✓</text>
+        <text x="708" y="234" font-family="IBM Plex Mono, monospace" font-size="9" fill="#4FE3A8">evasion ✓</text>
 
         <rect x="858" y="148" width="142" height="98" fill="none" stroke="currentColor" stroke-width="1"/>
-        <text x="870" y="172" font-family="Archivo, sans-serif" font-size="12.5" font-weight="600" fill="#E8EEF7">ESP32</text>
+        <text x="870" y="172" font-family="Archivo, sans-serif" font-size="12.5" font-weight="600" fill="#E9EEFB">ESP32</text>
         <text x="870" y="189" font-family="IBM Plex Mono, monospace" font-size="9" fill="currentColor">microcontroller</text>
         <line x1="870" y1="200" x2="988" y2="200" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3"/>
-        <text x="870" y="218" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5BD99A">evasion ✓</text>
-        <text x="870" y="234" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5BD99A">benchmarked ✓</text>
+        <text x="870" y="218" font-family="IBM Plex Mono, monospace" font-size="9" fill="#4FE3A8">evasion ✓</text>
+        <text x="870" y="234" font-family="IBM Plex Mono, monospace" font-size="9" fill="#4FE3A8">benchmarked ✓</text>
 
         <!-- axis -->
         <line x1="210" y1="266" x2="990" y2="266" stroke="currentColor" stroke-width="1" stroke-dasharray="3 4" marker-end="url(#ah2)"/>
         <text x="210" y="288" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.1" fill="currentColor">COMPUTE PER TARGET FALLS BY ORDERS OF MAGNITUDE</text>
-        <text x="1000" y="288" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.1" fill="#5BD99A">ATTACK SUCCESS: UNCHANGED</text>
+        <text x="1000" y="288" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.1" fill="#4FE3A8">ATTACK SUCCESS: UNCHANGED</text>
       </svg>
       <figcaption>
         <b>Shrinking the hardware does not shrink the attack surface.</b> The same extraction and evasion
@@ -525,47 +679,47 @@
             <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
           </marker>
           <marker id="ah3a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-            <path d="M 0 0 L 10 5 L 0 10 z" fill="#F2A93B"/>
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#FFC24B"/>
           </marker>
         </defs>
 
         <text x="0" y="20" font-family="IBM Plex Mono, monospace" font-size="10.5" letter-spacing="1.5" fill="currentColor">MODEL DELIVERY PIPELINE — COLOUR SHOWS WHICH DISCIPLINE OWNS THE STAGE</text>
 
-        <rect x="0" y="42" width="140" height="102" fill="none" stroke="#4FD8E8" stroke-width="1"/>
-        <text x="12" y="62" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="1" fill="#4FD8E8">AI/ML</text>
-        <text x="12" y="84" font-family="Archivo, sans-serif" font-size="13.5" font-weight="700" fill="#E8EEF7">Train</text>
+        <rect x="0" y="42" width="140" height="102" fill="none" stroke="#2FE3D0" stroke-width="1"/>
+        <text x="12" y="62" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="1" fill="#2FE3D0">AI/ML</text>
+        <text x="12" y="84" font-family="Archivo, sans-serif" font-size="13.5" font-weight="700" fill="#E9EEFB">Train</text>
         <text x="12" y="108" font-family="IBM Plex Mono, monospace" font-size="9" fill="currentColor">PyTorch · TensorFlow</text>
         <text x="12" y="123" font-family="IBM Plex Mono, monospace" font-size="9" fill="currentColor">fine-tune · validate</text>
 
-        <rect x="172" y="42" width="140" height="102" fill="none" stroke="#FF7359" stroke-width="1"/>
-        <text x="184" y="62" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="1" fill="#FF7359">AI SECURITY</text>
-        <text x="184" y="84" font-family="Archivo, sans-serif" font-size="13.5" font-weight="700" fill="#E8EEF7">Harden</text>
+        <rect x="172" y="42" width="140" height="102" fill="none" stroke="#FF5C7A" stroke-width="1"/>
+        <text x="184" y="62" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="1" fill="#FF5C7A">AI SECURITY</text>
+        <text x="184" y="84" font-family="Archivo, sans-serif" font-size="13.5" font-weight="700" fill="#E9EEFB">Harden</text>
         <text x="184" y="108" font-family="IBM Plex Mono, monospace" font-size="9" fill="currentColor">adversarial eval</text>
         <text x="184" y="123" font-family="IBM Plex Mono, monospace" font-size="9" fill="currentColor">red team · ATLAS</text>
 
-        <rect x="344" y="42" width="140" height="102" fill="none" stroke="#F2A93B" stroke-width="1"/>
-        <text x="356" y="62" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="1" fill="#F2A93B">CLOUD SECURITY</text>
-        <text x="356" y="84" font-family="Archivo, sans-serif" font-size="13.5" font-weight="700" fill="#E8EEF7">Scan</text>
+        <rect x="344" y="42" width="140" height="102" fill="none" stroke="#FFC24B" stroke-width="1"/>
+        <text x="356" y="62" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="1" fill="#FFC24B">CLOUD SECURITY</text>
+        <text x="356" y="84" font-family="Archivo, sans-serif" font-size="13.5" font-weight="700" fill="#E9EEFB">Scan</text>
         <text x="356" y="108" font-family="IBM Plex Mono, monospace" font-size="9" fill="currentColor">PROSEC · OSS deps</text>
         <text x="356" y="123" font-family="IBM Plex Mono, monospace" font-size="9" fill="currentColor">container images</text>
 
-        <rect x="516" y="42" width="140" height="102" fill="none" stroke="#F2A93B" stroke-width="1"/>
-        <text x="528" y="62" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="1" fill="#F2A93B">DEVOPS</text>
-        <text x="528" y="84" font-family="Archivo, sans-serif" font-size="13.5" font-weight="700" fill="#E8EEF7">Provision</text>
+        <rect x="516" y="42" width="140" height="102" fill="none" stroke="#FFC24B" stroke-width="1"/>
+        <text x="528" y="62" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="1" fill="#FFC24B">DEVOPS</text>
+        <text x="528" y="84" font-family="Archivo, sans-serif" font-size="13.5" font-weight="700" fill="#E9EEFB">Provision</text>
         <text x="528" y="108" font-family="IBM Plex Mono, monospace" font-size="9" fill="currentColor">Terraform IaC</text>
         <text x="528" y="123" font-family="IBM Plex Mono, monospace" font-size="9" fill="currentColor">GPU Kubernetes</text>
 
-        <rect x="688" y="42" width="140" height="102" fill="none" stroke="#8B7BFF" stroke-width="1"/>
-        <text x="700" y="62" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="1" fill="#8B7BFF">EMBEDDED / EDGE</text>
-        <text x="700" y="84" font-family="Archivo, sans-serif" font-size="13.5" font-weight="700" fill="#E8EEF7">Deploy</text>
+        <rect x="688" y="42" width="140" height="102" fill="none" stroke="#8A7BFF" stroke-width="1"/>
+        <text x="700" y="62" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="1" fill="#8A7BFF">EMBEDDED / EDGE</text>
+        <text x="700" y="84" font-family="Archivo, sans-serif" font-size="13.5" font-weight="700" fill="#E9EEFB">Deploy</text>
         <text x="700" y="108" font-family="IBM Plex Mono, monospace" font-size="9" fill="currentColor">ONNX · TFLite · Docker</text>
         <text x="700" y="123" font-family="IBM Plex Mono, monospace" font-size="9" fill="currentColor">Jetson · KV260 · ESP32</text>
 
-        <rect x="860" y="42" width="140" height="102" fill="rgba(255,115,89,0.07)" stroke="#FF7359" stroke-width="1"/>
-        <text x="872" y="62" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="1" fill="#FF7359">AI SECURITY</text>
-        <text x="872" y="84" font-family="Archivo, sans-serif" font-size="13.5" font-weight="700" fill="#E8EEF7">Guard</text>
-        <text x="872" y="108" font-family="IBM Plex Mono, monospace" font-size="9" fill="#A6B5CC">runtime guardrails</text>
-        <text x="872" y="123" font-family="IBM Plex Mono, monospace" font-size="9" fill="#A6B5CC">policy enforcement</text>
+        <rect x="860" y="42" width="140" height="102" fill="rgba(255,92,122,0.07)" stroke="#FF5C7A" stroke-width="1"/>
+        <text x="872" y="62" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="1" fill="#FF5C7A">AI SECURITY</text>
+        <text x="872" y="84" font-family="Archivo, sans-serif" font-size="13.5" font-weight="700" fill="#E9EEFB">Guard</text>
+        <text x="872" y="108" font-family="IBM Plex Mono, monospace" font-size="9" fill="#9DB0CE">runtime guardrails</text>
+        <text x="872" y="123" font-family="IBM Plex Mono, monospace" font-size="9" fill="#9DB0CE">policy enforcement</text>
 
         <line x1="140" y1="93" x2="166" y2="93" stroke="currentColor" stroke-width="1" marker-end="url(#ah3)"/>
         <line x1="312" y1="93" x2="338" y2="93" stroke="currentColor" stroke-width="1" marker-end="url(#ah3)"/>
@@ -573,12 +727,12 @@
         <line x1="656" y1="93" x2="682" y2="93" stroke="currentColor" stroke-width="1" marker-end="url(#ah3)"/>
         <line x1="828" y1="93" x2="854" y2="93" stroke="currentColor" stroke-width="1" marker-end="url(#ah3)"/>
 
-        <rect x="0" y="172" width="1000" height="34" fill="rgba(242,169,59,0.06)" stroke="#7A5A1E" stroke-width="1"/>
-        <text x="14" y="193" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.2" fill="#F2A93B">CI/CD — AWS CODEPIPELINE + GIT · AUTOMATED VALIDATION ON EVERY CHANGE · NO MANUAL GATE</text>
+        <rect x="0" y="172" width="1000" height="34" fill="rgba(255,194,75,0.06)" stroke="#6B5220" stroke-width="1"/>
+        <text x="14" y="193" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1.2" fill="#FFC24B">CI/CD — AWS CODEPIPELINE + GIT · AUTOMATED VALIDATION ON EVERY CHANGE · NO MANUAL GATE</text>
 
-        <path d="M 930 144 L 930 252 L 70 252 L 70 216" fill="none" stroke="#F2A93B" stroke-width="1" stroke-dasharray="4 4" marker-end="url(#ah3a)"/>
-        <rect x="316" y="242" width="368" height="20" fill="#0E1524"/>
-        <text x="500" y="257" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#F2A93B">runtime telemetry and red-team findings feed the next cycle</text>
+        <path d="M 930 144 L 930 252 L 70 252 L 70 216" fill="none" stroke="#FFC24B" stroke-width="1" stroke-dasharray="4 4" marker-end="url(#ah3a)"/>
+        <rect x="316" y="242" width="368" height="20" fill="#0A0E1C"/>
+        <text x="500" y="257" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#FFC24B">runtime telemetry and red-team findings feed the next cycle</text>
       </svg>
       <figcaption>
         <b>The four disciplines are one pipeline, not four jobs.</b> A model that trains well but ships on an
@@ -590,7 +744,12 @@
   </section>
 
   <section id="experience">
-    <div class="sec-head"><span class="idx">04</span><h2>Experience</h2><div class="rule"></div></div>
+    <div class="blk">
+      <span class="blk-id">4 years</span>
+      <h2>Experience</h2>
+      <span class="route"></span>
+      <span class="pad"></span>
+    </div>
 
     <div class="job">
       <div class="job-head">
@@ -664,9 +823,58 @@
     </div>
   </section>
 
+  <section id="embedded">
+    <div class="blk">
+      <span class="blk-id">4 projects</span>
+      <h2>Embedded AI projects</h2>
+      <span class="route"></span>
+      <span class="pad"></span>
+    </div>
+    <p class="lede">
+      Hardware work from my research internship at Bosch AIShield and my M.Tech in Embedded Systems —
+      where models stop being abstractions and start competing for milliwatts, clock cycles and kilobytes.
+      Two of these became peer-reviewed publications.
+    </p>
+
+    <div class="grid">
+      <article class="card">
+        <h3>Cross-Platform Adversarial Testbed</h3>
+        <p class="stack">TENSORFLOW · TFLITE · RASPBERRY PI · JETSON NANO · KRIA KV260 · ESP32</p>
+        <p>One CNN, five deployment targets, one consistent attack harness — built to answer whether moving a model to the edge changes its attack surface.</p>
+        <p class="note">It does not, materially. Model extraction and evasion transferred across datacentre GPU, edge GPU, FPGA and microcontroller with model performance intact. The finding underpins two peer-reviewed papers and is the reason &ldquo;it only runs on the edge&rdquo; is not a security control.</p>
+      </article>
+
+      <article class="card">
+        <h3>TinyML Time-Series Classifier on ESP32</h3>
+        <p class="stack">TENSORFLOW · TFLITE · ARDUINO · ESP32 MICROCONTROLLER</p>
+        <p>Trained a time-series classification CNN, deployed it to an ESP32, benchmarked it, then attacked it — characterising adversarial vulnerability under severe memory and compute constraints.</p>
+        <p class="note">Published as <em>Enhancing TinyML Security: Study of Adversarial Attack Transferability</em> at the tinyML Foundation EMEA Innovation Forum 2024 (arXiv:2407.11599).</p>
+      </article>
+
+      <article class="card">
+        <h3>Real-Time Object Detection on FPGA</h3>
+        <p class="stack">VITIS-AI · KRIA KV260 · PYNQ Z1 · EMBEDDED C</p>
+        <p>Implemented real-time object detection on FPGA and profiled CNN inference under varied quantization, precision and tiling strategies using hardware-level tooling.</p>
+        <p class="note">Published at IEEE ICOEI 2023, with a companion FPGA CNN classification paper at IEEE DICCT 2023. The profiling discipline here is what later made production ONNX and TFLite optimisation straightforward.</p>
+      </article>
+
+      <article class="card">
+        <h3>Cloud-to-Edge Inference on AWS Greengrass</h3>
+        <p class="stack">AWS GREENGRASS · DOCKER · TFLITE · ONNX · RASPBERRY PI</p>
+        <p>Managed edge AI workloads through Greengrass, building deployment pipelines that cut inference latency and reduced cloud dependency, validated end to end on Raspberry Pi hardware.</p>
+        <p class="note">Later extended with quantized TFLite and ONNX models for measurable latency reduction — and with a Mistral model running locally via Ollama on a Raspberry Pi, proving generative inference on constrained hardware.</p>
+      </article>
+    </div>
+  </section>
+
   <section id="builds">
-    <div class="sec-head"><span class="idx">05</span><h2>Independent builds</h2><div class="rule"></div></div>
-    <p class="lede">Built outside work, mostly because I wanted the thing to exist. They are where I own the whole stack — data, model, API, interface, deployment — and where security instincts from the day job become design constraints instead of review comments.</p>
+    <div class="blk">
+      <span class="blk-id">4 products</span>
+      <h2>Independent builds</h2>
+      <span class="route"></span>
+      <span class="pad"></span>
+    </div>
+    <p class="lede">Products I built on my own time because I wanted them to exist. They are where I own the whole stack — data, model, API, interface, deployment — and where security instincts from the day job become design constraints rather than review comments.</p>
 
     <div class="grid">
       <article class="card">
@@ -683,12 +891,6 @@
         <p class="note">A deterministic scoring engine drives the ranking so it stays auditable; the LLM only writes explanations. A crawler feeds public insurer pages through a human review queue, and premiums show as labelled estimates that link out for a binding quote.</p>
       </article>
 
-      <article class="card">
-        <h3>Agentic Job Application System</h3>
-        <p class="stack">NODE.JS · GMAIL OAUTH · TELEGRAM HITL · GEMINI</p>
-        <p>Watches job-alert email, parses each description, tailors a resume against it, and queues the result for approval.</p>
-        <p class="note">Designed around the constraint rather than past it: nothing auto-submits, every application clears a Telegram approval step, and throughput is capped. Automating the drafting is the useful part; automating the submission is what gets accounts banned.</p>
-      </article>
 
       <article class="card">
         <h3>Product Comparison Engine</h3>
@@ -704,17 +906,16 @@
         <p class="note">Segment selection returns three ranked candidates instead of one guess, a separate visual-direction microservice runs alongside the renderer, and Devanagari source text is spliced rather than regenerated, because models quietly corrupt scripts they are weak in.</p>
       </article>
 
-      <article class="card">
-        <h3>Edge Adversarial Testbed</h3>
-        <p class="stack">TENSORFLOW · TFLITE · RASPBERRY PI · JETSON NANO · KRIA KV260 · ESP32</p>
-        <p>The hardware bench behind two of the publications: one CNN, five deployment targets, one consistent attack harness, to find out whether moving a model to the edge changes its attack surface.</p>
-        <p class="note">It does not, materially — which is the finding. Extraction and evasion transferred across CPU, GPU, FPGA and microcontroller targets with performance intact.</p>
-      </article>
     </div>
   </section>
 
   <section id="research">
-    <div class="sec-head"><span class="idx">06</span><h2>Patents &amp; research</h2><div class="rule"></div></div>
+    <div class="blk">
+      <span class="blk-id">2 patents · 4 papers</span>
+      <h2>Patents &amp; research</h2>
+      <span class="route"></span>
+      <span class="pad"></span>
+    </div>
 
     <div class="patents">
       <article class="pat">
@@ -750,7 +951,12 @@
   </section>
 
   <section id="capabilities">
-    <div class="sec-head"><span class="idx">07</span><h2>Capabilities</h2><div class="rule"></div></div>
+    <div class="blk">
+      <span class="blk-id">8 stacks</span>
+      <h2>Capabilities</h2>
+      <span class="route"></span>
+      <span class="pad"></span>
+    </div>
     <dl class="caps">
       <div class="cap"><dt>AI / ML</dt><dd>PyTorch · TensorFlow · Keras · scikit-learn · NumPy · Pandas · OpenCV · CNNs · transformers · transfer learning · fine-tuning · time-series modelling · semantic segmentation · anomaly and outlier detection · SHAP · LIME</dd></div>
       <div class="cap"><dt>LLM / GenAI</dt><dd>Hugging Face · Llama 3.2 · DeBERTa-v3 · ModernBERT · Phi · Mistral · PEFT · RAG · embeddings and semantic search · prompt and context engineering · agentic workflows · LangChain · Ollama</dd></div>
@@ -764,7 +970,12 @@
   </section>
 
   <section id="education">
-    <div class="sec-head"><span class="idx">08</span><h2>Education</h2><div class="rule"></div></div>
+    <div class="blk">
+      <span class="blk-id">2 degrees</span>
+      <h2>Education</h2>
+      <span class="route"></span>
+      <span class="pad"></span>
+    </div>
     <div class="edu">
       <div class="edu-item">
         <h3>M.Tech, Embedded Systems</h3>
@@ -787,138 +998,127 @@
   </section>
 
   <footer>
-    <span>PARIN SHAH · AI/ML SECURITY ENGINEER · BENGALURU</span>
+    <span>PARIN SHAH · AI/ML ENGINEERING · AI SECURITY · CLOUD &amp; DEVOPS · EMBEDDED AI</span>
     <span>PARINJSHAH0526@GMAIL.COM</span>
   </footer>
 
 </div>
 
 <script>
-(function () {
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---------- scroll progress + rail ---------- */
+(function(){
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var prog = document.getElementById('prog');
   var links = [].slice.call(document.querySelectorAll('#rail a'));
-  var secs = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
-
-  function onScroll() {
-    var h = document.documentElement.scrollHeight - window.innerHeight;
-    prog.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var h = document.documentElement.scrollHeight - innerHeight;
+    prog.style.width = (h>0 ? (scrollY/h)*100 : 0) + '%';
     var best = -1;
-    for (var i = 0; i < secs.length; i++) {
-      if (secs[i] && secs[i].getBoundingClientRect().top < window.innerHeight * 0.4) best = i;
-    }
-    links.forEach(function (a, i) { a.classList.toggle('on', i === best); });
+    for (var i=0;i<secs.length;i++) if (secs[i] && secs[i].getBoundingClientRect().top < innerHeight*0.4) best = i;
+    links.forEach(function(a,i){ a.classList.toggle('on', i===best); });
   }
-  var ticking = false;
-  window.addEventListener('scroll', function () {
-    if (ticking) return; ticking = true;
-    requestAnimationFrame(function () { onScroll(); ticking = false; });
-  }, { passive: true });
+  var tick=false;
+  addEventListener('scroll',function(){ if(tick)return; tick=true; requestAnimationFrame(function(){onScroll();tick=false;}); },{passive:true});
   onScroll();
 
-  /* ---------- hero field: embedding space under adversarial sweep ---------- */
-  var cv = document.getElementById('field');
-  if (!cv) return;
-  var ctx = cv.getContext('2d');
-  var W = 0, H = 520, dpr = Math.min(window.devicePixelRatio || 1, 2), nodes = [];
-  var AMBER = '242,169,59', CYAN = '79,216,232', VIOL = '139,123,255';
+  /* ---- substrate: a tiling die floorplan that scrolls with the page ---- */
+  var cv = document.getElementById('die'); if(!cv) return;
+  var ctx = cv.getContext('2d'), W=0, H=0, dpr=Math.min(devicePixelRatio||1,2);
+  var WORLD = 1600;                       /* tile height in world units */
+  var blocks=[], routes=[], pulses=[];
+  var SIG='47,227,208', PAD='255,194,75', VIA='138,123,255';
 
-  function seed() {
-    var count = Math.max(70, Math.min(180, Math.floor(W / 8)));
-    nodes = [];
-    var centers = [
-      { x: W * 0.20, y: H * 0.40, c: CYAN },
-      { x: W * 0.58, y: H * 0.60, c: VIOL },
-      { x: W * 0.87, y: H * 0.28, c: CYAN }
-    ];
-    for (var i = 0; i < count; i++) {
-      var c = centers[i % centers.length];
-      var a = Math.random() * Math.PI * 2;
-      var r = Math.pow(Math.random(), 0.6) * Math.min(W, H) * 0.34;
-      nodes.push({
-        hx: c.x + Math.cos(a) * r,
-        hy: c.y + Math.sin(a) * r * 0.7,
-        col: c.c,
-        rad: 0.7 + Math.random() * 1.5,
-        ph: Math.random() * Math.PI * 2
-      });
+  function build(){
+    blocks=[]; routes=[]; pulses=[];
+    var cols = W<640 ? 3 : (W<1100 ? 5 : 7), rows = 6;
+    var cw = W/cols, ch = WORLD/rows;
+    for (var r=0;r<rows;r++) for (var c=0;c<cols;c++){
+      if (Math.random()<0.34) continue;
+      var pw = cw*(0.3+Math.random()*0.36), ph = ch*(0.22+Math.random()*0.3);
+      blocks.push({ x:c*cw+(cw-pw)/2, y:r*ch+(ch-ph)/2, w:pw, h:ph });
     }
-  }
-
-  function resize() {
-    W = cv.getBoundingClientRect().width;
-    cv.width = W * dpr; cv.height = H * dpr;
-    cv.style.height = H + 'px';
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    seed();
-  }
-
-  function frame(t) {
-    ctx.clearRect(0, 0, W, H);
-    if (!W) return;
-    var time = t * 0.001;
-    var sweep = ((time * 0.12) % 1.5 - 0.25) * W;
-
-    var pos = nodes.map(function (n) {
-      var d = n.hx - sweep;
-      var infl = Math.exp(-(d * d) / (2 * 70 * 70));
-      var drift = Math.sin(time * 0.5 + n.ph) * 3;
-      return {
-        x: n.hx + infl * Math.sin(time * 2.2 + n.ph) * 17,
-        y: n.hy + drift + infl * Math.cos(time * 1.8 + n.ph) * 14,
-        infl: infl, col: n.col, rad: n.rad
-      };
-    });
-
-    ctx.lineWidth = 0.6;
-    for (var i = 0; i < pos.length; i++) {
-      for (var j = i + 1; j < pos.length; j++) {
-        var dx = pos[i].x - pos[j].x, dy = pos[i].y - pos[j].y;
-        var dist = dx * dx + dy * dy;
-        if (dist < 8800) {
-          var a = (1 - dist / 8800) * 0.2;
-          var hot = Math.max(pos[i].infl, pos[j].infl);
-          ctx.strokeStyle = hot > 0.15
-            ? 'rgba(' + AMBER + ',' + (a * (0.4 + hot)) + ')'
-            : 'rgba(109,128,158,' + (a * 0.75) + ')';
-          ctx.beginPath();
-          ctx.moveTo(pos[i].x, pos[i].y);
-          ctx.lineTo(pos[j].x, pos[j].y);
-          ctx.stroke();
-        }
+    for (var i=0;i<blocks.length;i++){
+      for (var j=i+1;j<blocks.length;j++){
+        var a=blocks[i], b=blocks[j];
+        var ax=a.x+a.w/2, ay=a.y+a.h/2, bx=b.x+b.w/2, by=b.y+b.h/2;
+        if (Math.abs(ay-by) > ch*1.6 || Math.abs(ax-bx) > cw*1.9) continue;
+        if (Math.random()>0.5) continue;
+        var pts = Math.random()<0.5 ? [[ax,ay],[bx,ay],[bx,by]] : [[ax,ay],[ax,by],[bx,by]];
+        var len=0; for (var k=1;k<pts.length;k++) len += Math.abs(pts[k][0]-pts[k-1][0])+Math.abs(pts[k][1]-pts[k-1][1]);
+        if (len>4) routes.push({pts:pts, len:len});
       }
     }
-
-    for (var k = 0; k < pos.length; k++) {
-      var p = pos[k];
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.rad + p.infl * 1.7, 0, Math.PI * 2);
-      ctx.fillStyle = p.infl > 0.1
-        ? 'rgba(' + AMBER + ',' + (0.35 + p.infl * 0.6) + ')'
-        : 'rgba(' + p.col + ',0.42)';
-      ctx.fill();
-    }
-
-    var g = ctx.createLinearGradient(sweep - 62, 0, sweep + 62, 0);
-    g.addColorStop(0, 'rgba(' + AMBER + ',0)');
-    g.addColorStop(0.5, 'rgba(' + AMBER + ',0.17)');
-    g.addColorStop(1, 'rgba(' + AMBER + ',0)');
-    ctx.fillStyle = g;
-    ctx.fillRect(sweep - 62, 0, 124, H);
-
-    if (!reduced) requestAnimationFrame(frame);
+    var n = Math.min(30, routes.length);
+    for (var q=0;q<n;q++)
+      pulses.push({ r:Math.floor(Math.random()*routes.length), t:Math.random(),
+                    v:0.05+Math.random()*0.09, hue: Math.random()<0.68?SIG:(Math.random()<0.6?PAD:VIA) });
   }
 
-  resize();
-  frame(0);
+  function ptAt(route,t){
+    var d=t*route.len, pts=route.pts;
+    for (var k=1;k<pts.length;k++){
+      var dx=pts[k][0]-pts[k-1][0], dy=pts[k][1]-pts[k-1][1], seg=Math.abs(dx)+Math.abs(dy);
+      if (d<=seg||k===pts.length-1){ var f=seg?d/seg:0; return [pts[k-1][0]+dx*f, pts[k-1][1]+dy*f]; }
+      d-=seg;
+    }
+    return pts[pts.length-1];
+  }
 
-  var rt;
-  window.addEventListener('resize', function () {
-    clearTimeout(rt);
-    rt = setTimeout(function () { resize(); if (reduced) frame(0); }, 160);
+  function resize(){
+    var r = cv.getBoundingClientRect();
+    W = r.width; H = r.height;
+    cv.width=W*dpr; cv.height=H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0); build();
+  }
+
+  function paintTile(off){
+    ctx.save(); ctx.translate(0, off);
+    ctx.lineWidth=1; ctx.strokeStyle='rgba(24,33,60,.95)';
+    routes.forEach(function(rt){
+      ctx.beginPath(); ctx.moveTo(rt.pts[0][0],rt.pts[0][1]);
+      for (var k=1;k<rt.pts.length;k++) ctx.lineTo(rt.pts[k][0],rt.pts[k][1]);
+      ctx.stroke();
+    });
+    blocks.forEach(function(b){
+      ctx.fillStyle='rgba(10,14,28,.5)'; ctx.fillRect(b.x,b.y,b.w,b.h);
+      ctx.strokeStyle='rgba(28,39,70,.9)'; ctx.strokeRect(b.x,b.y,b.w,b.h);
+      ctx.fillStyle='rgba(255,194,75,.3)';
+      for (var n=0;n<4;n++){ var px=b.x+6+n*((b.w-12)/3); ctx.fillRect(px-1.5,b.y-2,3,3); }
+    });
+    pulses.forEach(function(p){
+      var rt=routes[p.r]; if(!rt) return;
+      var pt=ptAt(rt,p.t);
+      var g=ctx.createRadialGradient(pt[0],pt[1],0,pt[0],pt[1],15);
+      g.addColorStop(0,'rgba('+p.hue+',.8)'); g.addColorStop(1,'rgba('+p.hue+',0)');
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(pt[0],pt[1],15,0,6.2832); ctx.fill();
+      ctx.fillStyle='rgba('+p.hue+',.95)'; ctx.fillRect(pt[0]-1.5,pt[1]-1.5,3,3);
+    });
+    ctx.restore();
+  }
+
+  function frame(){
+    ctx.clearRect(0,0,W,H); if(!W) return;
+    if(!reduced) pulses.forEach(function(p){
+      p.t += p.v*0.016;
+      if (p.t>1){ p.t=0; p.r=Math.floor(Math.random()*routes.length); }
+    });
+    var off = -((scrollY*0.16) % WORLD);
+    paintTile(off); paintTile(off + WORLD);
+    if (off + WORLD < H) paintTile(off + WORLD*2);
+    if(!reduced) requestAnimationFrame(frame);
+  }
+
+  resize(); frame();
+
+  /* map quadrants jump to their section */
+  var JUMP={ml:'#practice',sec:'#surface',ops:'#experience',edge:'#embedded'};
+  document.querySelectorAll('.mapfig .q').forEach(function(g){
+    g.addEventListener('click',function(){
+      var t=document.querySelector(JUMP[g.dataset.q]||'#practice');
+      if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+    });
   });
+  var rt2; addEventListener('resize',function(){ clearTimeout(rt2); rt2=setTimeout(function(){resize(); if(reduced) frame(0);},170); });
 })();
 </script>
 </body>
